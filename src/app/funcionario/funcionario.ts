@@ -9,7 +9,7 @@ export class Funcionario {
 
   pessoa: string;
 
-  admissao: string;
+  admissao: Date;
 
   ativo: boolean = false;
 
