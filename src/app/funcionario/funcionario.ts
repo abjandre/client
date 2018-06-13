@@ -1,5 +1,6 @@
 import { Setor } from "../setor/setor";
 import { Cargo } from "../cargo/cargo";
+import { Pessoa } from "../pessoa/pessoa";
 
 export class Funcionario {
 
@@ -8,7 +9,7 @@ export class Funcionario {
   matricula: string;
 
   pessoa: string;
-
+  
   admissao: Date;
 
   ativo: boolean = false;
@@ -18,5 +19,7 @@ export class Funcionario {
   setor: Setor;
 
   cargo: Cargo;
+
+  
 
 }

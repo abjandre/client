@@ -14,6 +14,8 @@ import {AtributoComponent} from './atributo/atributo.component';
 import {AtributofComponent} from './atributof/atributof.component';
 import {AtividadeComponent} from './atividade/atividade.component';
 import {FuncionarioComponent} from './funcionario/funcionario.component';
+import { CidadeComponent } from './cidade/cidade.component';
+import { EstadoComponent } from './estado/estado.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,9 @@ const routes: Routes = [
       {path: 'cponto', component: CpontoComponent},
       {path: 'atributo', component: AtributoComponent},
       {path: 'atributof', component: AtributofComponent},
-      {path: 'atividade', component: AtividadeComponent}
+      {path: 'atividade', component: AtividadeComponent},
+      {path: 'cidade', component: CidadeComponent},
+      {path: 'estado', component: EstadoComponent}
     ]
   },
   {path: 'login', component: LoginComponent}
