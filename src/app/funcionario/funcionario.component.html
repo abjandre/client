@@ -30,7 +30,7 @@
       <td>{{funcionario.admissao}}</td>
       <td>{{funcionario.ativo}}</td>
       <td>{{funcionario.setor?.descricao}}</td>
-      <td>{{funcionario.cargo?.nome}}</td>
+      <td>{{funcionario.cargo?.descricao}}</td>
       <td>{{funcionario.salario}}</td>
       <td>
         <button class="btn btn-primary" (click)="editar(funcionario)">
@@ -88,7 +88,7 @@
 
       <div class="form-group">
           <label for="cargo">Cargo</label>
-        <p-dropdown [autoDisplayFirst]="false" name= "cargo" [options]="cargos" [(ngModel)]="funcionarioEdit.cargo" optionLabel="nome"></p-dropdown>
+        <p-dropdown [autoDisplayFirst]="false" name= "cargo" [options]="cargos" [(ngModel)]="funcionarioEdit.cargo" optionLabel="descricao"></p-dropdown>
       </div>
 
 
