@@ -8,7 +8,7 @@ export abstract class Pessoa {
   
     cgc: number;
   
-    telefone: number;
+    telefone: string;
   
     endereco: string;
   

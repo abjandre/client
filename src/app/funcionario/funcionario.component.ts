@@ -23,7 +23,9 @@ export class FuncionarioComponent implements OnInit {
   setores: Setor[];
   cidades: Cidade[];
   estados: Estado[];
-
+  cidadeEdit = new Cidade();
+  estadoEdit = new Estado();
+  
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
@@ -63,6 +65,7 @@ export class FuncionarioComponent implements OnInit {
   editar(funcionario: Funcionario) {
     this.funcionarioEdit = funcionario;
     this.showDialog = true;
+  
   }
 
   remover(funcionario: Funcionario) {

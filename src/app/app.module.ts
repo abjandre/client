@@ -19,6 +19,9 @@ import {AtividadeModule} from './atividade/atividade.module';
 import {SetorModule} from './setor/setor.module';
 import {CargoModule} from './cargo/cargo.module';
 import {FuncionarioModule} from './funcionario/funcionario.module';
+import { EstadoModule } from './estado/estado.module';
+import { CidadeModule } from './cidade/cidade.module';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import {FuncionarioModule} from './funcionario/funcionario.module';
     PerfilModule,
     AtributoModule,
     AtributofModule,
-    AtividadeModule
+    AtividadeModule,
+    EstadoModule,
+    CidadeModule,
+    PessoaModule
   ],
   providers: [
     {

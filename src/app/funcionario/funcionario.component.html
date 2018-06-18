@@ -39,8 +39,8 @@
       <td>{{funcionario.telefone}}</td>
       <td>{{funcionario.endereco}}</td>
       <td>{{funcionario.email}}</td>
-      <td>{{fornecedor.estado.nome}}</td>
-      <td>{{fornecedor.cidade.nome}}</td>
+      <td>{{funcionario.cidade.estado.nome}}</td>
+      <td>{{funcionario.cidade?.nome}}</td>
       <td>{{funcionario.admissao}}</td>
       <td>{{funcionario.ativo}}</td>
       <td>{{funcionario.setor?.descricao}}</td>
@@ -79,12 +79,12 @@
         </div>
 
         <div class="form-group">
-          <label for="pessoa">Nome</label>
+          <label for="nome">Nome</label>
           <input type="text"
-                  id="pessoa"
-                  name="pessoa"
+                  id="nome"
+                  name="nome"
                   class="form-control"
-                  [(ngModel)]="funcionarioEdit.pessoa">
+                  [(ngModel)]="funcionarioEdit.nome">
         </div>
 
         
@@ -99,26 +99,26 @@
        
 
         
-          <div class="form-group">
+          <!--<div class="form-group">
             <label for="cgc">CNPJ</label>
             <input type="text"
                    id="cgc"
                    name="cgc"
                    class="form-control"
                    [(ngModel)]="funcionarioEdit.cgc">
-          </div>
-        
+          </div>-->
 
-        
+          <div class="form-group">
+            <label for="cgc">CPF</label>
+            <p></p>
+            <p-inputMask id="cgc" name="cgc" [(ngModel)]="funcionarioEdit.cgc" mask="999.999.999-99"></p-inputMask>
+          </div>
+  
           <div class="form-group">
             <label for="telefone">Telefone</label>
-            <input type="text"
-                   id="telefone"
-                   name="telefone"
-                   class="form-control"
-                   [(ngModel)]="funcionarioEdit.telefone">
+            <p></p>
+            <p-inputMask id="telefone" name="telefone" [(ngModel)]="funcionarioEdit.telefone" mask="(99)9999-9999"></p-inputMask>
           </div>
-        
 
         
           <div class="form-group">
@@ -144,7 +144,7 @@
 
         <div class="form-group">
           <label for="estado">Estado</label>
-          <p-dropdown name= "estado" id="estado" [options]="estados" (onChange)="buscaCidades(funcionarioEdit.estado)"
+          <p-dropdown name="estado" id="estado" [options]="estados" (onChange)="buscaCidades(funcionarioEdit.estado)"
                       [(ngModel)]="funcionarioEdit.estado" optionLabel="nome" [autoDisplayFirst]="false">
           </p-dropdown>
          </div>
@@ -159,6 +159,7 @@
 
       <div class="form-group">
           <label for="admissao">Admissão</label>
+          <p></p>
           <p-calendar name="adissao" [(ngModel)]="funcionarioEdit.admissao" dateFormat="dd/mm/yy" dataType="string"></p-calendar>
       </div>
 

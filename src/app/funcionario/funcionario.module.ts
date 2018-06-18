@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {DropdownModule, Dropdown} from 'primeng/dropdown';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CalendarModule} from 'primeng/calendar';
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {CalendarModule} from 'primeng/calendar';
     DropdownModule,
     CheckboxModule,
     CalendarModule,
+    InputMaskModule
   ],
   declarations: [
     FuncionarioComponent
