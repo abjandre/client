@@ -23,9 +23,13 @@ export class FornecedorComponent implements OnInit {
   estados: Estado[];
   msgs: Message[] = [];
 
-  constructor(private fornecedorService: FornecedorService, private confirmationService: ConfirmationService, private loginService: LoginService, private estadoService: EstadoService, private cidadeService:CidadeService) {
+  constructor(private fornecedorService: FornecedorService, 
+              private confirmationService: ConfirmationService, 
+              private loginService: LoginService, 
+              private estadoService: EstadoService, 
+              private cidadeService:CidadeService) {
   }
-
+  
   ngOnInit(): void {
     this.findAll();
     this.estadoService.findAll().subscribe(e => this.estados = e);
