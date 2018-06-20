@@ -63,17 +63,22 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  confirm(produto: Produto) {
-    this.confirmationService.confirm({
-      message: 'Essa ação não poderá ser desfeita',
-      header: 'Deseja remover esse registro?',
-      accept: () => {
-        this.produtoService.delete(produto.id).subscribe(() => {
-          this.findAll();
-          this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+  confirmDelete(produto: Produto) {
+        this.confirmationService.confirm({
+            message: 'Essa ação não poderá ser desfeita',
+            header: 'Deseja remover esse registro?',
+            accept: () => {
+                this.produtoService.delete(produto.id).subscribe(() => {
+                this.findAll();
+                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+              });
+            }
         });
-      }
-    });
+    }
+
+  cancelar() {
+      this.showDialog = false;
+      this.produtoService.findAll().subscribe(e => this.produtos = e);
   }
 
 }

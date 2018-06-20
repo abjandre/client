@@ -6,37 +6,37 @@
       <button *ngIf="hasRole('CLIENTE_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao"  
       (click)="novo()">Criar novo</button>
 		
-		<p-table [value]="clientes">
-		  <ng-template pTemplate="header">
-		    <tr>
-		      <th>ID</th>
-		      <th>Nome</th>
-		      <th>Apelido</th>
-		      <th>CGC</th>
-		      <th>Telefone</th>
-		      <th>Endereço</th>
-		      <th>E-mail</th>
-			  <th>Ativo</th>
-		      <th>Ações</th>
-		    </tr>
-		  </ng-template>
-		  <ng-template pTemplate="body" let-cliente>
-		    <tr>
-		      <td>{{cliente.id}}</td>
-		      <td>{{cliente.nome}}</td>
-		      <td>{{cliente.apelido}}</td>
-		      <td>{{cliente.cgc}}</td>
-		      <td>{{cliente.telefone}}</td>
-		      <td>{{cliente.endereco}}</td>
-		      <td>{{cliente.email}}</td>
-			  <td>{{cliente.ativo}}</td>
-		      <td>
-		      <button *ngIf="hasRole('CLIENTE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cliente)">
-                <i class="fa fa-edit"></i>
-              </button>
-              <button *ngIf="hasRole('CLIENTE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cliente)">
-                  <i class="fa fa-trash"></i>
-			  </button>
+      <p-table [value]="clientes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>CGC</th>
+            <th>Telefone</th>
+            <th>EndereÃ§o</th>
+            <th>E-mail</th>
+            <th>Ativo</th>
+            <th>AÃ§Ãµes</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cliente>
+          <tr>
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.apelido}}</td>
+            <td>{{cliente.cgc}}</td>
+            <td>{{cliente.telefone}}</td>
+            <td>{{cliente.endereco}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.ativo}}</td>
+            <td>
+            <button *ngIf="hasRole('CLIENTE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cliente)">
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button *ngIf="hasRole('CLIENTE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cliente)">
+                    <i class="fa fa-trash"></i>
+          </button>
 				<!--<p-confirmDialog header="Confirmacao"
                 message="Deseja remover o registro?"
                 icon="pi pi-exclamation-triangle" width="425" [(visible)]="showConfirm">

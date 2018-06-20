@@ -77,7 +77,9 @@
     <div class="col-sm-12">
       <div class="form-group">
         <label for="cliente">Cliente</label>
-        <p-dropdown styleClass="width: 100%" [options]="clientes" [(ngModel)]="obraEdit.idCliente" placeholder="Selecione o Cliente" optionLabel="idPessoa.descricao" [showClear]="true"></p-dropdown>
+        <p-dropdown styleClass="width: 100%" [options]="clientes" 
+        [(ngModel)]="obraEdit.idCliente" placeholder="Selecione o Cliente" 
+        optionLabel="nome" [showClear]="true"></p-dropdown>
       </div>
     </div>
   </div>
@@ -86,13 +88,17 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label for="ccusto">Centro de Custo</label>
-        <p-dropdown styleClass="width: 100%" [options]="ccustos" [(ngModel)]="obraEdit.idCcusto" placeholder="Selecione o Centro de Custo" optionLabel="descricao" [showClear]="true"></p-dropdown>
+        <p-dropdown styleClass="width: 100%" [options]="ccustos" 
+        [(ngModel)]="obraEdit.idCcusto" placeholder="Selecione o Centro de Custo" 
+        optionLabel="descricao" [showClear]="true"></p-dropdown>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="form-group">
         <label for="cidade">Local da Obra</label>
-        <p-dropdown styleClass="width: 100%" [options]="cidades" [(ngModel)]="obraEdit.idCidade" placeholder="Selecione a Cidade" optionLabel="descricao" [showClear]="true"></p-dropdown>
+        <p-dropdown styleClass="width: 100%" [options]="cidades" 
+        [(ngModel)]="obraEdit.idCidade" placeholder="Selecione a Cidade" 
+        optionLabel="nome" [showClear]="true"></p-dropdown>
       </div>
     </div>
   </div>

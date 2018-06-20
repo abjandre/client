@@ -6,31 +6,31 @@
       <button *ngIf="hasRole('FORNECEDOR_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao"  
       (click)="novo()">Criar novo</button>
 
-		<p-table [value]="fornecedores">
-		  <ng-template pTemplate="header">
-		    <tr>
-		      <th>ID</th>
-		      <th>Nome</th>
-		      <th>Apelido</th>
-		      <th>CGC</th>
-		      <th>Telefone</th>
-		      <th>Endereço</th>
-		      <th>E-mail</th>
-			  <th>Ativo</th>
-		      <th>Ações</th>
-		    </tr>
-		  </ng-template>
-		  <ng-template pTemplate="body" let-fornecedor>
-		    <tr>
-		      <td>{{fornecedor.id}}</td>
-		      <td>{{fornecedor.nome}}</td>
-		      <td>{{fornecedor.apelido}}</td>
-		      <td>{{fornecedor.cgc}}</td>
-		      <td>{{fornecedor.telefone}}</td>
-		      <td>{{fornecedor.endereco}}</td>
-		      <td>{{fornecedor.email}}</td>
-			  <td>{{fornecedor.ativo}}</td>
-			  
+        <p-table [value]="fornecedores">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Apelido</th>
+              <th>CGC</th>
+              <th>Telefone</th>
+              <th>EndereÃ§o</th>
+              <th>E-mail</th>
+            <th>Ativo</th>
+              <th>Aes</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-fornecedor>
+            <tr>
+              <td>{{fornecedor.id}}</td>
+              <td>{{fornecedor.nome}}</td>
+              <td>{{fornecedor.apelido}}</td>
+              <td>{{fornecedor.cgc}}</td>
+              <td>{{fornecedor.telefone}}</td>
+              <td>{{fornecedor.endereco}}</td>
+              <td>{{fornecedor.email}}</td>
+            <td>{{fornecedor.ativo}}</td>
+            
 		      <td>
 		      <button *ngIf="hasRole('FORNECEDOR_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(fornecedor)">
                 <i class="fa fa-edit"></i>

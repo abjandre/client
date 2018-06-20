@@ -83,4 +83,9 @@ export class AtributofComponent implements OnInit {
             }
         });
     }
+
+    cancelar() {
+      this.showDialog = false;
+      this.atributofService.findAll().subscribe(e => this.atributofs = e);
+  }
 }

@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {CrudService} from '../generic/crud.service';
-import {Pessoa} from './pessoa';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs/Observable';
+import {Pessoa} from './pessoa';
+
 
 @Injectable()
 export class PessoaService extends CrudService<Pessoa, number> {
@@ -11,3 +13,4 @@ export class PessoaService extends CrudService<Pessoa, number> {
     super(environment.api + '/pessoa', http);
   }
 }
+
