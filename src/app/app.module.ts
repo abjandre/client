@@ -29,7 +29,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {ClienteModule} from './cliente/cliente.module';
 import {ObraModule} from './obra/obra.module';
 import {CidadeModule} from './cidade/cidade.module';
-import {EstadoModule} from './cidade/cidade.module';
+import {EstadoModule} from './estado/estado.module';
 
 @NgModule({
   declarations: [
@@ -65,8 +65,8 @@ import {EstadoModule} from './cidade/cidade.module';
     AmChartsModule,
     CidadeModule,
     FornecedorModule,
-	  ClienteModule,
-	  EstadoModule,
+	ClienteModule,
+	EstadoModule,
     CidadeModule
 
   ],
