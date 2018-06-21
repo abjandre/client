@@ -12,7 +12,7 @@ import {CheckboxModule, Dropdown, DropdownModule, RadioButtonModule} from 'prime
     FormsModule,
     TableModule,
     DialogModule,
-    DropdownModule
+    DropdownModule,
   ],
   declarations: [
   ],

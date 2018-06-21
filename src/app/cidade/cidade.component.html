@@ -12,14 +12,14 @@
       <th>ID</th>
       <th>Nome</th>
       <th>Estado</th>
-      <th>Ações</th>
+      <th>AÃ§Ãµes</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cidade>
     <tr>
       <td>{{cidade.id}}</td>
       <td>{{cidade.nome}}</td>
-      <td>{{cidade.estado}}</td>
+      <td>{{cidade.estado.nome}}</td>
       <td>
         <button *ngIf="hasRole('CIDADE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cidade)">
 			<i class="fa fa-edit"></i>

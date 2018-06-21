@@ -68,4 +68,9 @@ export class AtributoComponent implements OnInit {
             }
         });
     }
+
+  cancelar(){
+    this.showDialog = false;
+    this.atributoService.findAll().subscribe(e => this.atributos = e);
+  }
 }

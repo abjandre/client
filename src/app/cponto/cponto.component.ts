@@ -88,4 +88,9 @@ export class CpontoComponent implements OnInit {
       }
     });
   }
+
+  cancelar() {
+      this.showDialog = false;
+      this.cpontoService.findAll().subscribe(e => this.cpontos = e);
+  }
 }

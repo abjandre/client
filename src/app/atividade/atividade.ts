@@ -1,4 +1,4 @@
-// import {Obra} from '../obra/obra';
+import {Obra} from '../obra/obra';
 
 import {Funcionario} from '../funcionario/funcionario';
 import {Atributo} from '../atributo/atributo';
@@ -7,7 +7,7 @@ export class Atividade {
 
   id: number;
 
-  // obra: Obra;
+  obra: Obra;
 
   atributo: Atributo[];
 

@@ -26,20 +26,25 @@
           <td>{{produto.descricao}}</td>
           <td>{{produto.tipo}}</td>
           <td>{{produto.estoque}}</td>
-          <td>{{produto.valor}}</td>
+          <td>R{{produto.valor | currency}}</td>
           <td>
             <button class="btn btn-primary" (click)="editar(produto)">
               <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-danger" (click)="confirm(produto)">
+            <button class="btn btn-danger" (click)="confirmDelete(produto)">
 
               <i class="fa fa-trash"></i>
             </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
 
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+      </header>
+    <div _ngcontent-c2="" class="content-body">
+    </div>  
+  </section>
+</div>
 
 <p-confirmDialog></p-confirmDialog>
 <p-growl [(value)]="msgs"></p-growl>
@@ -56,7 +61,7 @@
 
         <label for="nome">Nome</label>
         <input type="text"
-               required="required"
+               required = "required"
                id="nome"
                name="nome"
                class="form-control"
@@ -64,7 +69,7 @@
 
         <label for="descricao">Descrição</label>
         <input type="text"
-               required="required"
+               required = "required"
                id="descricao"
                name="descricao"
                class="form-control"
@@ -89,16 +94,16 @@
                id="valor"
                name="valor"
                [step]="0.25"
-               min="1" max="100000" required=“required” 
-               class="form-control" placeholder="Informe o valor em R$ separado por vírgula "
-
+               min="1" max="100000" 
+               class="form-control" placeholder="Informe o valor"
+                required="required"
                [(ngModel)]="produtoEdit.valor">
       </div>
     </div>
   </div>
 
   <p-footer>
-    <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+    <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
     <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
   </p-footer>
 </p-dialog>
