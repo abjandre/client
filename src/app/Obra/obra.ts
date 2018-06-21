@@ -1,7 +1,7 @@
 import {Cliente} from '../cliente/cliente';
 import {Ccusto} from '../ccusto/ccusto';
 import {Fornecedor} from '../fornecedor/fornecedor';
-import {Cidade} from '../cidade/cidade';
+import {Local} from '../local/local';
 
 export class Obra {
   id: number;
@@ -9,7 +9,7 @@ export class Obra {
   idCliente: Cliente;
   idCcusto: Ccusto;
   idFornecedor: Fornecedor;
-  idCidade: Cidade;
+  idLocal: Local;
   inicio: Date;
   fim: Date;
   inicioPrevisto: Date;

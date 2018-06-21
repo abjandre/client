@@ -1,3 +1,5 @@
+import { ClienteService } from './../cliente/cliente.service';
+import { PessoaService } from './../pessoa/pessoa.service';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {NotaComponent} from './nota.component';
@@ -21,7 +23,9 @@ import {TabViewModule} from 'primeng/tabview';
     NotaComponent
   ],
   providers: [
-    NotaService
+    NotaService,
+    PessoaService,
+    ClienteService
   ]
 })
 export class NotaModule {
