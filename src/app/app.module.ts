@@ -30,6 +30,7 @@ import {ClienteModule} from './cliente/cliente.module';
 import {ObraModule} from './obra/obra.module';
 import {CidadeModule} from './cidade/cidade.module';
 import {EstadoModule} from './estado/estado.module';
+import {LocalModule} from './local/local.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {EstadoModule} from './estado/estado.module';
     FornecedorModule,
 	  ClienteModule,
 	  EstadoModule,
-    CidadeModule
+    CidadeModule,
+    LocalModule
 
   ],
   providers: [

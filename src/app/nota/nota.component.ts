@@ -1,3 +1,8 @@
+import { PessoaService } from './../pessoa/pessoa.service';
+import { PerfilService } from './../perfil/perfil.service';
+import { ClienteService } from './../cliente/cliente.service';
+import { PessoaModule } from './../pessoa/pessoa.module';
+import { Cliente } from './../cliente/cliente';
 import { ItemNotaService } from './../itemNota/itemNota.service';
 import { ItemNota } from './../itemNota/itemNota';
 import {Component, OnInit} from '@angular/core';
@@ -5,30 +10,31 @@ import {NotaService} from './nota.service';
 import {Nota} from './nota';
 import { ProdutoService } from './../produto/produto.service';
 import { Produto } from './../produto/produto';
-import {LoginService} from '../login/login.service'; 
-
-
+import {LoginService} from '../login/login.service';
+import { Pessoa } from './../pessoa/pessoa'; 
 
 @Component({
   templateUrl: './nota.component.html',
   styleUrls: ['./nota.component.css'],
   selector: 'minha-lista-itensNota'
-
 })
+
 export class NotaComponent implements OnInit {
   itemNotaService: any;
-
   notas: Nota[];
   showDialog = false;
   notaEdit = new Nota();
   idProdutos: Produto[];
   itemNotaEdit = new ItemNota();
   editandoItem = false;
-
+  clientes: Cliente[];
+  pessoas: Pessoa[];
+  pessoaEdit = new Cliente();
   //Array de Itens
   itens: Array<ItemNota> = [];
 
-  constructor(private notaService: NotaService, private produtoService:ProdutoService, private loginService: LoginService) {
+  constructor(private notaService: NotaService, private produtoService:ProdutoService, private loginService: LoginService,
+  private clienteService:ClienteService) {
   }
 
   hasRole(role: string): boolean {
@@ -38,6 +44,9 @@ export class NotaComponent implements OnInit {
   ngOnInit(): void {
     this.findAll();
     this.produtoService.findAll().subscribe(e=> this.idProdutos =e);
+    this.clienteService.findAll().subscribe(e => this.clientes = e);
+   
+    
   }
 
   findAll() {
@@ -57,7 +66,6 @@ export class NotaComponent implements OnInit {
       this.notaEdit = e;
       this.findAll();
       this.showDialog = false;
-
     });
   }
 
@@ -91,7 +99,15 @@ export class NotaComponent implements OnInit {
 const index = this.itens.indexOf(itemNota);
 this.itens.splice(index,1);
 
-
-
   }
+
+  calculaTotal(){ 
+    let somaTotal =0;
+for (var itemNota of this.itens) {
+
+somaTotal += itemNota.quantidade * itemNota.produto.valor;
+  }
+  return somaTotal;
+}
+
 }

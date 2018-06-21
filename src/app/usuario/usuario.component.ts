@@ -53,7 +53,7 @@ export class UsuarioComponent implements OnInit {
       this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro salvo com sucesso'}];
     },
     error => {
-      this.msgs = [{severity: 'error', summary: 'Erro', detail: error.error.message}];
+      this.msgs = [{severity: 'error', summary: 'Erro', detail: "Verifique campos obrigatórios, ou login já existente!"}];
     });
   }
 

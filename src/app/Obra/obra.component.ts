@@ -11,6 +11,8 @@ import {AmChartsService, AmChart} from '@amcharts/amcharts3-angular';
 import { } from '@types/googlemaps';
 import {Cidade} from '../cidade/cidade';
 import {CidadeService} from '../cidade/cidade.service';
+import {Local} from '../local/local';
+import {LocalService} from '../local/local.service';
 
 @Component({
   templateUrl: './obra.component.html',
@@ -32,6 +34,7 @@ export class ObraComponent implements OnInit {
   map: google.maps.Map;
   clientes: Cliente[];
   cidades: Cidade[];
+  locais: Local[];
   fornecedores: Fornecedor[];
   ccustos: Ccusto[];
   showDialog = false;
@@ -52,7 +55,8 @@ export class ObraComponent implements OnInit {
   }
 
   constructor(private obraService: ObraService, private clienteService: ClienteService, private fornecedorService: FornecedorService,
-              private CcustoService: CcustoService, private AmCharts: AmChartsService, private cidadeService: CidadeService) {
+              private CcustoService: CcustoService, private AmCharts: AmChartsService, private cidadeService: CidadeService,
+              private localService: LocalService) {
   }
 
 
@@ -76,6 +80,7 @@ export class ObraComponent implements OnInit {
     this.fornecedorService.findAll().subscribe(e => this.fornecedores = e);
     this.CcustoService.findAll().subscribe(e => this.ccustos = e);
     this.cidadeService.findAll().subscribe(e => this.cidades = e);
+    this.localService.findAll().subscribe(e => this.locais = e);
 
     this.options = this.makeOptions(this.obras);
 
@@ -138,9 +143,9 @@ export class ObraComponent implements OnInit {
     console.log(this.obras);
   }
 
-  setCenter(e:any, cidades){
+  setCenter(e:any, locais){
     e.preventDefault();
-    this.map.setCenter(new google.maps.LatLng(cidades[0].latitude, cidades[0].longitude));
+    this.map.setCenter(new google.maps.LatLng(locais[0].latitude, locais[0].longitude));
   }
 
   novo() {

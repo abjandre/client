@@ -41,7 +41,11 @@ export class PerfilComponent implements OnInit {
       this.perfilEdit = new Perfil();
       this.findAll();
       this.showDialog = false;
-    });
+      this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro salvo com sucesso'}];
+     },
+      error => {
+        this.msgs = [{severity: 'error', summary: 'Erro', detail: "Preencha os campos obrigatórios!"}];
+      });
   }
 
   editar(perfil: Perfil) {
