@@ -62,15 +62,16 @@ export class BancohorasComponent implements OnInit {
                   bAchou = true;
                   break;
                 }
-                if (!bAchou) {
-                  const bh: Bancohoras = new Bancohoras();
-                  bh.data = cponto.data;
-                  bh.funcionario = cponto.funcionario;
-                  bh.horas = this.horasSaldo(cponto.entrada, cponto.saida);
-                  bh.minutos = this.minutosSaldo(cponto.entrada, cponto.saida);
-                  this.bancoHoras.push(bh);
-                }
               }
+              if (!bAchou) {
+                const bh: Bancohoras = new Bancohoras();
+                bh.data = cponto.data;
+                bh.funcionario = cponto.funcionario;
+                bh.horas = this.horasSaldo(cponto.entrada, cponto.saida);
+                bh.minutos = this.minutosSaldo(cponto.entrada, cponto.saida);
+                this.bancoHoras.push(bh);
+              }
+
             }
           });
         this.cpontos = e
@@ -97,7 +98,7 @@ export class BancohorasComponent implements OnInit {
   minutosSaldo(entrada: String, saida: String) {
     const ent: any = Date.parse('2000-01-01 ' + entrada);
     let sai: any = Date.parse('2000-01-01 ' + saida);
-    if( ent > sai ){
+    if (ent > sai) {
       sai = Date.parse('2000-01-02 ' + saida);
     }
     let dif = (sai - ent);
