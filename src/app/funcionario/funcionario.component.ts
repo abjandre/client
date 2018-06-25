@@ -9,6 +9,10 @@ import { Cidade } from '../cidade/cidade';
 import { Estado } from '../estado/estado';
 import { EstadoService } from '../estado/estado.service';
 import { CidadeService } from '../cidade/cidade.service';
+<<<<<<< HEAD
+=======
+import { LoginService } from '../login/login.service';
+>>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -29,6 +33,10 @@ export class FuncionarioComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
+<<<<<<< HEAD
+=======
+              , private loginService:LoginService
+>>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
 ) {
 
   }
@@ -40,6 +48,13 @@ export class FuncionarioComponent implements OnInit {
     this.estadoService.findAll().subscribe(e => this.estados = e);
   }
 
+<<<<<<< HEAD
+=======
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
+  }
+
+>>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
   buscaCidades(estado): void{
   	this.cidadeService.findByEstado(estado).subscribe(c => this.cidades = c);
   }

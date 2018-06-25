@@ -1,6 +1,9 @@
+import { LoginService } from './../login/login.service';
 import {Component, OnInit} from '@angular/core';
 import {CcustoService} from './ccusto.service';
 import {Ccusto} from './ccusto';
+import {ConfirmationService, Message} from 'primeng/api';
+import {Cponto} from '../cponto/cponto';
 
 @Component({
   templateUrl: './ccusto.component.html',
@@ -11,8 +14,15 @@ export class CcustoComponent implements OnInit {
   ccustos: Ccusto[];
   showDialog = false;
   ccustoEdit = new Ccusto();
+  showConfirm = false;
+  msgs: Message[] = [];
 
-  constructor(private ccustoService: CcustoService) {
+  constructor(private ccustoService: CcustoService, private loginService: LoginService
+              , private confirmationService: ConfirmationService) {
+  }
+
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
   }
 
   ngOnInit(): void {
@@ -22,8 +32,6 @@ export class CcustoComponent implements OnInit {
   findAll() {
     this.ccustoService.findAll().subscribe(e => this.ccustos = e);
   }
-
-
 
   novo() {
     this.showDialog = true;
@@ -35,6 +43,10 @@ export class CcustoComponent implements OnInit {
       this.ccustoEdit = new Ccusto();
       this.findAll();
       this.showDialog = false;
+        this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
+      },
+      error => {
+        this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos ou verifique campos duplicados.'}];
     });
   }
 
@@ -46,6 +58,30 @@ export class CcustoComponent implements OnInit {
   remover(ccusto: Ccusto) {
     this.ccustoService.delete(ccusto.id).subscribe(() => {
       this.findAll();
+      this.showConfirm = false;
     });
+  }
+
+  confirmDelete(ccusto: Ccusto) {
+    this.confirmationService.confirm({
+      message: 'Essa ação não poderá ser desfeita',
+      header: 'Deseja remover esse registro?',
+      acceptLabel: 'SIM',
+      rejectLabel: 'NÃO',
+      accept: () => {
+        this.ccustoService.delete(ccusto.id).subscribe(() => {
+          this.findAll();
+          this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
+      }
+    });
+  }
+
+  cancelar() {
+      this.showDialog = false;
+      this.ccustoService.findAll().subscribe(e => this.ccustos = e);
   }
 }

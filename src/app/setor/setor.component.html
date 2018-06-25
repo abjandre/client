@@ -16,11 +16,16 @@
           <tr>
             <td>{{setor.id}}</td>
             <td>{{setor.descricao}}</td>
+<<<<<<< HEAD
             <!--<td>
               <button *ngIf="hasRole('SETOR_EDITAR')" class="btn btn-primary" (click)="editar(setor)">
+=======
+            <td>
+              <button *ngIf="hasRole('SETOR_EDITAR')  || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(setor)">
+>>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="hasRole('SETOR_REMOVER')" class="btn btn-danger" (click)="remover(setor)">
+              <button *ngIf="hasRole('SETOR_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="remover(setor)">
                 <i class="fa fa-trash"></i>
               </button>
             </td-->

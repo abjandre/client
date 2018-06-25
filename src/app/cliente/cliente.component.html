@@ -1,0 +1,127 @@
+<link rel="stylesheet" type="text/css" class=".../styles.css">
+<div _ngcontent-c2="" class="col-lg-12">
+	<section _ngcontent-c2="" class="box ">
+		<header _ngcontent-c2="" class="panel_header">
+			<h4 _ngcontent-c2="" class="title pull-left title1">Cliente</h4>
+			<button *ngIf="hasRole('CLIENTE_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao"  
+				(click)="novo()">Criar novo</button>
+		
+			<p-table [value]="clientes">
+				<ng-template pTemplate="header">
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Apelido/Nome Fantasia</th>
+						<th>CGC</th>
+						<th>Telefone</th>
+					</tr>
+					<tr>
+						<th>Cidade</th>
+						<th>Endereço</th>
+						<th>E-mail</th>
+						<th>Ativo</th>
+						<th>Ações</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-cliente>
+				<tr>
+					<td>{{cliente.id}}</td>
+					<td>{{cliente.nome}}</td>
+					<td>{{cliente.apelido}}</td>
+					<td>{{cliente.cgc}}</td>
+					<td>{{cliente.telefone}}</td>
+				</tr>
+				<tr>
+					<td>{{cliente.cidade.nome}}</td>
+					<td>{{cliente.endereco}}</td>
+					<td>{{cliente.email}}</td>
+					<td>{{cliente.ativo}}</td>
+					<td>
+						<button *ngIf="hasRole('CLIENTE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cliente)">
+							<i class="fa fa-edit"></i>
+						</button>
+						<button *ngIf="hasRole('CLIENTE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cliente)">
+							<i class="fa fa-trash"></i>
+						</button>
+					</td>
+				</tr>
+				</ng-template>
+			</p-table>
+		</header>
+		<div _ngcontent-c2="" class="content-body"></div>  
+    </section>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
+<p-dialog header="Cadastro"
+          [(visible)]="showDialog"
+          modal="modal"
+          [responsive]="true"
+          [width]="500">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="nome">Nome</label>
+				<input type="text"
+					   id="nome"
+					   name="nome"
+					   class="form-control"
+					   [(ngModel)]="clienteEdit.nome">
+
+				<label for="apelido">Apelido/Nome Fantasia</label>
+				<input type="text"
+					   id="apelido"
+					   name="apelido"
+					   class="form-control"
+					   [(ngModel)]="clienteEdit.apelido">
+
+				<label for="cgc">CGC</label>
+				<input type="text"
+					   id="cgc"
+					   name="cgc"
+					   class="form-control"
+					   [(ngModel)]="clienteEdit.cgc">
+
+				<label for="telefone">Telefone</label><br>
+				<p-inputMask mask="(99)99999-9999"
+						id="telefone"
+						name="telefone"
+						placeholder="(99)99999-9999"
+						[(ngModel)]="clienteEdit.telefone">
+				</p-inputMask><br>
+
+				<label for="endereco">Endereco</label>
+				<input type="text"
+					   id="endereco"
+					   name="endereco"
+					   class="form-control"
+					   [(ngModel)]="clienteEdit.endereco">
+
+				<label for="email">E-mail</label>
+				<input type="email"
+						id="email"
+						name="email"
+						class="form-control"
+						[(ngModel)]="clienteEdit.email">
+
+				<label for="estado">Estado</label>
+				<p-dropdown name= "estado" id="estado" [options]="estados" (onChange)="buscaCidades(clienteEdit.estado)"
+							[(ngModel)]="clienteEdit.estado" optionLabel="nome" [autoDisplayFirst]="false">
+				</p-dropdown>
+
+				<label for="cidade">Cidade</label>
+				<p-dropdown name= "cidade" id="cidade" [options]="cidades"
+						   [(ngModel)]="clienteEdit.cidade" optionLabel="nome" [autoDisplayFirst]="false">
+				</p-dropdown>
+				
+				<p-checkbox name="ativo" [(ngModel)]="clienteEdit.ativo" label="Ativo" binary="true"></p-checkbox>
+			</div>
+		</div>
+	</div>
+	<p-footer>
+
+		<button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+		<button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
+	</p-footer>
+</p-dialog>
