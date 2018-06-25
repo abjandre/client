@@ -48,13 +48,6 @@ export class FuncionarioComponent implements OnInit {
     this.estadoService.findAll().subscribe(e => this.estados = e);
   }
 
-<<<<<<< HEAD
-=======
-  hasRole(role: string): boolean {
-    return this.loginService.hasRole(role);
-  }
-
->>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
   buscaCidades(estado): void{
   	this.cidadeService.findByEstado(estado).subscribe(c => this.cidades = c);
   }

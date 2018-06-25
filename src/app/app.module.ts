@@ -19,25 +19,14 @@ import {AtributofModule} from './atributof/atributof.module';
 import {AtributoModule} from './atributo/atributo.module';
 import {PerfilModule} from './perfil/perfil.module';
 import {FuncionarioModule} from './funcionario/funcionario.module';
-<<<<<<< HEAD
 import { EstadoModule } from './estado/estado.module';
 import { CidadeModule } from './cidade/cidade.module';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { CcustoModule } from './ccusto/ccusto.module';
+import { CpontoModule } from './cponto/cponto.module';
+import { SetorModule } from './setor/setor.module';
+import { CargoModule } from './cargo/cargo.module';
 
-=======
-import {CargoModule} from './cargo/cargo.module';
-import {SetorModule} from './setor/setor.module';
-import {CpontoModule} from './cponto/cponto.module';
-import {CcustoModule} from './ccusto/ccusto.module';
-import {PessoaModule} from './pessoa/pessoa.module';
-import {FornecedorModule} from './fornecedor/fornecedor.module';
-import {DropdownModule} from 'primeng/dropdown';
-import {ClienteModule} from './cliente/cliente.module';
-import {ObraModule} from './obra/obra.module';
-import {CidadeModule} from './cidade/cidade.module';
-import {EstadoModule} from './estado/estado.module';
-import {LocalModule} from './local/local.module';
->>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
 
 @NgModule({
   declarations: [
@@ -63,27 +52,9 @@ import {LocalModule} from './local/local.module';
     AtributoModule,
     AtributofModule,
     AtividadeModule,
-<<<<<<< HEAD
     EstadoModule,
     CidadeModule,
     PessoaModule
-=======
-    BancohorasModule,
-    ProdutoModule,
-    PessoaModule,
-    DropdownModule,
-    FornecedorModule,
-    ClienteModule,
-    ObraModule,
-    AmChartsModule,
-    CidadeModule,
-    FornecedorModule,
-	  ClienteModule,
-	  EstadoModule,
-    CidadeModule,
-    LocalModule
-
->>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
   ],
   providers: [
     {
