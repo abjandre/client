@@ -46,14 +46,13 @@ export class CcustoComponent implements OnInit {
         this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
       },
       error => {
-        this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
+        this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos ou verifique campos duplicados.'}];
     });
   }
 
   editar(ccusto: Ccusto) {
     this.ccustoEdit = ccusto;
     this.showDialog = true;
-    this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
   remover(ccusto: Ccusto) {
@@ -63,15 +62,20 @@ export class CcustoComponent implements OnInit {
     });
   }
 
-  confirm(ccusto: Ccusto) {
+  confirmDelete(ccusto: Ccusto) {
     this.confirmationService.confirm({
       message: 'Essa ação não poderá ser desfeita',
       header: 'Deseja remover esse registro?',
+      acceptLabel: 'SIM',
+      rejectLabel: 'NÃO',
       accept: () => {
         this.ccustoService.delete(ccusto.id).subscribe(() => {
           this.findAll();
           this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-        });
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
       }
     });
   }

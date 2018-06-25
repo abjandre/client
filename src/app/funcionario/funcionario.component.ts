@@ -9,6 +9,7 @@ import { Cidade } from '../cidade/cidade';
 import { Estado } from '../estado/estado';
 import { EstadoService } from '../estado/estado.service';
 import { CidadeService } from '../cidade/cidade.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -29,6 +30,7 @@ export class FuncionarioComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
+              , private loginService:LoginService
 ) {
 
   }
@@ -38,6 +40,10 @@ export class FuncionarioComponent implements OnInit {
     this.cargoService.findAll().subscribe(e => this.cargos = e);
     this.setorService.findAll().subscribe(e => this.setores = e);
     this.estadoService.findAll().subscribe(e => this.estados = e);
+  }
+
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
   }
 
   buscaCidades(estado): void{

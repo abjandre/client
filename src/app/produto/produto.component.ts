@@ -3,8 +3,6 @@ import {ProdutoService} from './produto.service';
 import {Produto} from './produto';
 import {LoginService} from '../login/login.service';
 import {ConfirmationService, Message} from 'primeng/api';
-import {Ccusto} from '../ccusto/ccusto';
-
 
 @Component({
   templateUrl: './produto.component.html',
@@ -19,6 +17,7 @@ export class ProdutoComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService,
               private loginService: LoginService, private confirmationService: ConfirmationService) {
+
   }
 
   hasRole(role: string): boolean {
@@ -46,14 +45,13 @@ export class ProdutoComponent implements OnInit {
         this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
       },
       error => {
-        this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
+        this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos ou verifique nomes duplicados'}];
       });
   }
 
   editar(produto: Produto) {
     this.produtoEdit = produto;
     this.showDialog = true;
-    this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
   remover(produto: Produto) {
@@ -64,17 +62,21 @@ export class ProdutoComponent implements OnInit {
   }
 
   confirmDelete(produto: Produto) {
-        this.confirmationService.confirm({
-            message: 'Essa ação não poderá ser desfeita',
-            header: 'Deseja remover esse registro?',
-            accept: () => {
-                this.produtoService.delete(produto.id).subscribe(() => {
-                this.findAll();
-                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-              });
-            }
-        });
-    }
+    this.confirmationService.confirm({
+      message: 'Essa ação não poderá ser desfeita',
+      header: 'Deseja remover esse registro?',
+      acceptLabel: 'Sim', rejectLabel: 'Não',
+      accept: () => {
+        this.produtoService.delete(produto.id).subscribe(() => {
+            this.findAll();
+            this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
+      }
+    });
+  }
 
   cancelar() {
       this.showDialog = false;

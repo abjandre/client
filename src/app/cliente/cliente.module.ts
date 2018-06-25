@@ -7,10 +7,11 @@ import {DialogModule} from 'primeng/dialog';
 import {FormsModule} from '@angular/forms';
 import {EstadoService} from '../estado/estado.service';
 import {CidadeService} from '../cidade/cidade.service';
-import {DropdownModule, CheckboxModule} from 'primeng/primeng';
+import {DropdownModule, CheckboxModule, InputMaskModule} from 'primeng/primeng';
 import {LoginService} from '../login/login.service';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {GrowlModule} from 'primeng/growl'
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import {ConfirmationService} from 'primeng/api';
     DialogModule,
     DropdownModule,
     CheckboxModule,
-	ConfirmDialogModule
+	InputMaskModule,
+	ConfirmDialogModule,
+	GrowlModule
   ],
   declarations: [
     ClienteComponent

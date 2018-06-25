@@ -101,6 +101,13 @@
           <div class="ui-g-4"><p-checkbox name="ponto" value="PONTO_REMOVER" label="Remover" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
         </div>
 
+        <label>Cidade:</label>
+        <div class="ui-g" style="width:300px;margin-bottom:10px">
+          <div class="ui-g-4"><p-checkbox name="cidade" value="CIDADE_CRIAR" label="Criar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+          <div class="ui-g-4"><p-checkbox name="cidade" value="CIDADE_EDITAR" label="Editar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+          <div class="ui-g-4"><p-checkbox name="cidade" value="CIDADE_REMOVER" label="Remover" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+        </div>
+
         <label>Centro de Custo:</label>
         <div class="ui-g" style="width:300px;margin-bottom:10px">
           <div class="ui-g-4"><p-checkbox name="centrocusto" value="CENTROCUSTO_CRIAR" label="Criar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
@@ -113,6 +120,13 @@
           <div class="ui-g-4"><p-checkbox name="cliente" value="CLIENTE_CRIAR" label="Criar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
           <div class="ui-g-4"><p-checkbox name="cliente" value="CLIENTE_EDITAR" label="Editar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
           <div class="ui-g-4"><p-checkbox name="cliente" value="CLIENTE_REMOVER" label="Remover" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+        </div>
+
+        <label>Estado:</label>
+        <div class="ui-g" style="width:300px;margin-bottom:10px">
+          <div class="ui-g-4"><p-checkbox name="estado" value="ESTADO_CRIAR" label="Criar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+          <div class="ui-g-4"><p-checkbox name="estado" value="ESTADO_EDITAR" label="Editar" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
+          <div class="ui-g-4"><p-checkbox name="estado" value="ESTADO_REMOVER" label="Remover" [(ngModel)]="perfilEdit.permissoes"></p-checkbox></div>
         </div>
 
         <label>Fornecedor:</label>
@@ -184,7 +198,7 @@
 
   <p-footer>
 
-    <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+    <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
     <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
   </p-footer>
 </p-dialog>

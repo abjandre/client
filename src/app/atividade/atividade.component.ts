@@ -109,23 +109,27 @@ export class AtividadeComponent implements OnInit {
   editar(atividade: Atividade) {
     this.atividadeEdit = atividade;
     this.showDialog = true;
-    this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
-  confirm(atividade: Atividade) {
+  confirmDelete(atividade: Atividade) {
     this.confirmationService.confirm({
       message: 'Essa ação não poderá ser desfeita',
       header: 'Deseja remover esse registro?',
+      acceptLabel: 'SIM',
+      rejectLabel: 'NÃO',
       accept: () => {
         this.atividadeService.delete(atividade.id).subscribe(() => {
           this.findAll();
           this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-        });
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
       }
     });
   }
 
-  cancelar(){
+  cancelar() {
     this.showDialog = false;
     this.atividadeService.findAll().subscribe(e => this.atividades = e);
   }

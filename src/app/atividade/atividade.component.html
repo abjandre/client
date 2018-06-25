@@ -28,7 +28,7 @@
                 <i class="fa fa-edit"></i>
               </button>
 
-              <button *ngIf="hasRole('ATIVIDADE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirm(atividade)">
+              <button *ngIf="hasRole('ATIVIDADE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(atividade)">
                 <i class="fa fa-trash"></i>
               </button>
 

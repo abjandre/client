@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {LoginService} from '../login/login.service';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {GrowlModule} from 'primeng/growl';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {ConfirmationService} from 'primeng/api';
     TableModule,
     DialogModule,
 	ConfirmDialogModule,
+	GrowlModule
   ],
   declarations: [
     EstadoComponent
