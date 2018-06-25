@@ -60,6 +60,7 @@ export class AtributoComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
+            acceptLabel: 'Sim', rejectLabel: 'Não',
             accept: () => {
                 this.atributoService.delete(atributo.id).subscribe(() => {
                 this.findAll();
@@ -68,4 +69,9 @@ export class AtributoComponent implements OnInit {
             }
         });
     }
+
+  cancelar(){
+    this.showDialog = false;
+    this.atributoService.findAll().subscribe(e => this.atributos = e);
+  }
 }

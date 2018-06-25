@@ -7,8 +7,8 @@ import {AtributoService} from '../atributo/atributo.service';
 import {Atributo} from '../atributo/atributo';
 import {AtributofService} from '../atributof/atributof.service';
 import {ConfirmationService, Message} from 'primeng/api';
-// import {Obra} from '../obra/obra';
-// import {ObraService} from '../obra/obra.service';
+import {Obra} from '../obra/obra';
+import {ObraService} from '../obra/obra.service';
 import {LoginService} from '../login/login.service';
 import {Atributof} from '../atributof/atributof';
 
@@ -20,7 +20,7 @@ import {Atributof} from '../atributof/atributof';
 export class AtividadeComponent implements OnInit {
 
   atividades: Atividade[];
-  // obras: Obra[];
+  obras: Obra[];
   atributos: Atributo[];
   funcionarios: Funcionario[];
   l: Atributof[];
@@ -38,14 +38,14 @@ export class AtividadeComponent implements OnInit {
     , private atributoFuncService: AtributofService
     , private loginService: LoginService
     , private confirmationService: ConfirmationService
-    // , private obraService: ObraService
+    , private obraService: ObraService
 
   ) {
   }
 
   ngOnInit(): void {
     this.findAll();
-    // this.obraService.findAll().subscribe(e => this.obras = e);
+    this.obraService.findAll().subscribe(e => this.obras = e);
     this.funcionarioService.findAll().subscribe(e => this.funcionarios = e);
     this.atributoService.findAll().subscribe(e => this.atributos = e);
 
@@ -109,7 +109,7 @@ export class AtividadeComponent implements OnInit {
   editar(atividade: Atividade) {
     this.atividadeEdit = atividade;
     this.showDialog = true;
-  this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
+    this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
   confirm(atividade: Atividade) {
@@ -123,6 +123,11 @@ export class AtividadeComponent implements OnInit {
         });
       }
     });
+  }
+
+  cancelar(){
+    this.showDialog = false;
+    this.atividadeService.findAll().subscribe(e => this.atividades = e);
   }
 
 

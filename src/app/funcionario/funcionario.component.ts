@@ -5,13 +5,10 @@ import { CargoService } from '../cargo/cargo.service';
 import { Cargo } from '../cargo/cargo';
 import { SetorService } from '../setor/setor.service';
 import { Setor } from '../setor/setor';
-
-import {EstadoService} from '../estado/estado.service';
-import {CidadeService} from '../cidade/cidade.service';
-import {Estado} from '../estado/estado';
-import {Cidade} from '../cidade/cidade';
-import {LoginService} from '../login/login.service';
-
+import { Cidade } from '../cidade/cidade';
+import { Estado } from '../estado/estado';
+import { EstadoService } from '../estado/estado.service';
+import { CidadeService } from '../cidade/cidade.service';
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -26,18 +23,14 @@ export class FuncionarioComponent implements OnInit {
   setores: Setor[];
   cidades: Cidade[];
   estados: Estado[];
+  cidadeEdit = new Cidade();
+  estadoEdit = new Estado();
+  
+  constructor(private funcionarioService: FuncionarioService
+              , private cargoService: CargoService, private setorService: SetorService
+              , private estadoService:EstadoService, private cidadeService:CidadeService
+) {
 
-  constructor(private funcionarioService: FuncionarioService,
-              private cargoService: CargoService, 
-              private setorService: SetorService, 
-              private estadoService:EstadoService, 
-              private cidadeService:CidadeService,
-              private loginService: LoginService
-) {}
-
-
-  hasRole(role: string): boolean {
-    return this.loginService.hasRole(role);
   }
 
   ngOnInit(): void {
@@ -51,6 +44,7 @@ export class FuncionarioComponent implements OnInit {
   	this.cidadeService.findByEstado(estado).subscribe(c => this.cidades = c);
   }
   
+
   findAll() {
     this.funcionarioService.findAll().subscribe(e => this.funcionarios = e);
   }
@@ -71,6 +65,7 @@ export class FuncionarioComponent implements OnInit {
   editar(funcionario: Funcionario) {
     this.funcionarioEdit = funcionario;
     this.showDialog = true;
+  
   }
 
   remover(funcionario: Funcionario) {

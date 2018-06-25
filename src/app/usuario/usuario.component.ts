@@ -53,12 +53,12 @@ export class UsuarioComponent implements OnInit {
       this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro salvo com sucesso'}];
     },
     error => {
-      this.msgs = [{severity: 'error', summary: 'Erro', detail: error.error.message}];
+      this.msgs = [{severity: 'error', summary: 'Erro', detail: "Verifique campos obrigatórios, ou login já existente!"}];
     });
   }
 
   editar(usuario: Usuario) {
-    //usuario.authorities = null;
+    usuario.authorities = null;
     this.usuarioEdit = usuario;
     this.showDialog = true;
     this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro alterado com sucesso'}];

@@ -8,10 +8,8 @@
         <ng-template pTemplate="header">
           <tr>
             <th class="ids">ID</th>
-            <!--<th>Obra</th>-->
+            <th>Obra</th>
             <th>Descrição da Atividade</th>
-            <th>Início</th>
-            <th>Fim</th>
             <th>Início Previsto</th>
             <th>Fim Previsto</th>
             <th class="acoes">Ações</th>
@@ -21,10 +19,8 @@
         <ng-template pTemplate="body" let-atividade>
           <tr>
             <td>{{atividade.id}}</td>
-            <!--<td>{{atividade.obra?.nome}}</td>-->
+            <td>{{atividade.obra?.descricao}}</td>
             <td>{{atividade.descricao}}</td>
-            <td>{{atividade.inicio}}</td>
-            <td>{{atividade.fim}}</td>
             <td>{{atividade.inicioPrevisto}}</td>
             <td>{{atividade.fimPrevisto}}</td>
             <td>
@@ -62,14 +58,14 @@
     <div class="col-sm-12">
       <div class="form-group">
 
-        <!--<label for="obra">Obra</label>-->
-        <!--<p-dropdown name= "obra" id="obra" [options]="obras"-->
-        <!--[(ngModel)]="atividadeEdit.obra" optionLabel="nome">-->
-        <!--</p-dropdown>-->
+        <label for="obra">Obra</label>
+        <p-dropdown name= "obra" id="obra" [options]="obras"
+        placeholder="Selecione uma obra"
+        [(ngModel)]="atividadeEdit.obra" optionLabel="descricao">
+        </p-dropdown><br>
 
         <label for="atributo">Atributo(s)</label><br>
         <p-multiSelect name="atributo" id="atributo"
-
                        defaultLabel="Escolha os atributos"
                        optionLabel="descricao"
                        filterPlaceHolder="  Digite aqui o nome do atributo"
@@ -86,7 +82,7 @@
         <label for="funcionario">Funcionário(s)</label><br>
         <p-multiSelect name="funcionario" id="funcionario"
                        defaultLabel="Escolha os funcionários "
-                       optionLabel="pessoa"
+                       optionLabel="nome"
                        filterPlaceHolder="  Digite aqui o nome do funcionário"
                        selectedItemsLabel="{0} funcionários selecionados"
                        [options]="funcionarios"
@@ -186,7 +182,7 @@
 
   <p-footer>
 
-    <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+    <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
     <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
   </p-footer>
 </p-dialog>

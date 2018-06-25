@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {CidadeComponent} from './cidade.component';
-import {CidadeService} from './cidade.service';
+import {LocalComponent} from './local.component';
+import {LocalService} from './local.service';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import {FormsModule} from '@angular/forms';
@@ -10,7 +10,7 @@ import {EstadoService} from '../estado/estado.service';
 import {LoginService} from '../login/login.service';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-
+import {CidadeService} from '../cidade/cidade.service';
 
 @NgModule({
   imports: [
@@ -22,15 +22,16 @@ import {ConfirmationService} from 'primeng/api';
 	ConfirmDialogModule
   ],
   declarations: [
-    CidadeComponent
+    LocalComponent
   ],
   providers: [
-    CidadeService,
+    LocalService,
     EstadoService,
 	  LoginService,
+    CidadeService,
 	  ConfirmationService
   ]
 })
-export class CidadeModule {
+export class LocalModule {
 
 }

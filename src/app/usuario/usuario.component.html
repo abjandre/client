@@ -56,17 +56,21 @@
         <input type="text"
                id="nome"
                name="nome"
+               required="required"
                class="form-control"
                [(ngModel)]="usuarioEdit.nome"
                required>
 
         <label for="username">Login</label>
+        
         <input type="text"
                id="username"
                name="username"
+               required="required"
                class="form-control"
                [(ngModel)]="usuarioEdit.username"
-               required>
+               
+               >
 
 
         <label for="password">Senha</label>
@@ -78,7 +82,7 @@
                required pPassword>
 
         <label for="email">E-mail</label>
-        <input type="text"
+        <input type="email"
                id="email"
                name="email"
                class="form-control"

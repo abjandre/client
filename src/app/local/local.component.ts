@@ -1,78 +1,78 @@
 import {Component, OnInit} from '@angular/core';
-import {CidadeService} from './cidade.service';
-import {Cidade} from './cidade';
-import {Estado} from '../estado/estado';
-import {EstadoService} from '../estado/estado.service';
+import {LocalService} from './local.service';
+import {Local} from './local';
 import {LoginService} from '../login/login.service';
 import {Message} from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
+import {Cidade} from '../cidade/cidade';
+import {CidadeService} from '../cidade/cidade.service';
 
 @Component({
-  templateUrl: './cidade.component.html',
-  styleUrls: ['./cidade.component.css']
+  templateUrl: './local.component.html',
+  styleUrls: ['./local.component.css']
 })
-export class CidadeComponent implements OnInit {
+export class LocalComponent implements OnInit {
 
+  locais: Local[];
   cidades: Cidade[];
   showDialog = false;
   showConfirm = false;
-  cidadeEdit = new Cidade();
-  estados: Estado[];
+  localEdit = new Local();
   msgs: Message[] = [];
-  
-  constructor(private cidadeService: CidadeService, 
-              private confirmationService: ConfirmationService, 
-              private estadoService: EstadoService, 
+
+  constructor(private localService: LocalService,
+              private confirmationService: ConfirmationService,
+              private cidadeService: CidadeService,
               private loginService: LoginService) {
   }
 
   ngOnInit(): void {
     this.findAll();
-    this.estadoService.findAll().subscribe(e => this.estados = e);
+    this.cidadeService.findAll().subscribe(e => this.cidades = e);
   }
-  
+
   hasRole(role: string): boolean {
     return this.loginService.hasRole(role);
   }
-  
+
   mostrarConfirm(condicao: boolean) {
 	this.showConfirm = condicao;
   }
 
   findAll() {
-    this.cidadeService.findAll().subscribe(e => this.cidades = e);
+    this.localService.findAll().subscribe(e => this.locais = e);
   }
 
   novo() {
     this.showDialog = true;
-    this.cidadeEdit = new Cidade();
+    this.localEdit = new Local();
   }
 
   salvar() {
-    this.cidadeService.save(this.cidadeEdit).subscribe(e => {
-      this.cidadeEdit = new Cidade();
+    this.localService.save(this.localEdit).subscribe(e => {
+      this.localEdit = new Local();
       this.findAll();
       this.showDialog = false;
     });
   }
 
-  editar(cidade: Cidade) {
-    this.cidadeEdit = cidade;
+  editar(local: Local) {
+    this.localEdit = local;
     this.showDialog = true;
   }
 
-  remover(cidade: Cidade) {
-    this.cidadeService.delete(cidade.id).subscribe(() => {
+  remover(local: Local) {
+    this.localService.delete(local.id).subscribe(() => {
       this.findAll();
 	  this.showConfirm = false;
     });
   }
-  
-  confirmDelete(cidade: Cidade){
+
+  confirmDelete(local: Local){
 	  this.confirmationService.confirm({
 		  message:'Essa ação não poderá ser desfeita',
 		  header:'Deseja remover esse registro?',
-		  accept:()=>{this.cidadeService.delete(cidade.id).subscribe(()=>{
+		  accept:()=>{this.localService.delete(local.id).subscribe(()=>{
 			  this.findAll();
 			  this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
 		  });
