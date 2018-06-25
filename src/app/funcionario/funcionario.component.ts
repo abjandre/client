@@ -9,10 +9,6 @@ import { Cidade } from '../cidade/cidade';
 import { Estado } from '../estado/estado';
 import { EstadoService } from '../estado/estado.service';
 import { CidadeService } from '../cidade/cidade.service';
-<<<<<<< HEAD
-=======
-import { LoginService } from '../login/login.service';
->>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -33,10 +29,6 @@ export class FuncionarioComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
-<<<<<<< HEAD
-=======
-              , private loginService:LoginService
->>>>>>> 73adbb7faa9f9bd41dd0a89c6d29679a9fb2557f
 ) {
 
   }
