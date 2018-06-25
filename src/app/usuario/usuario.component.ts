@@ -61,19 +61,28 @@ export class UsuarioComponent implements OnInit {
     usuario.authorities = null;
     this.usuarioEdit = usuario;
     this.showDialog = true;
-    this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro alterado com sucesso'}];
+    //this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro alterado com sucesso'}];
   }
 
   confirmDelete(usuario: Usuario) {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
-            accept: () => {
+            acceptLabel: 'Sim', rejectLabel: 'Não',
+             accept: () => {
                 this.usuarioService.delete(usuario.id).subscribe(() => {
                 this.findAll();
-                this.msgs = [{severity: 'sucess', summary: 'Confirmado', detail: 'Registro removido com sucesso'}];
+                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso!'}];
+              },
+              error => {
+                this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro não pode ser removido!'}];
               });
             }
         });
     }
+    
+  cancelar() {
+      this.showDialog = false;
+      this.usuarioService.findAll().subscribe(e => this.usuarios = e);
+  }
 }

@@ -75,16 +75,21 @@ export class CpontoComponent implements OnInit {
     this.cpontoEdit = cponto;
     this.showDialog = true;
   }
-  
+
   confirm(cponto: Cponto) {
     this.confirmationService.confirm({
       message: 'Essa ação não poderá ser desfeita',
       header: 'Deseja remover esse registro?',
+      acceptLabel: 'SIM',
+      rejectLabel: 'NÃO',
       accept: () => {
         this.cpontoService.delete(cponto.id).subscribe(() => {
-          this.findAll();
-          this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-        });
+            this.findAll();
+            this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
       }
     });
   }

@@ -10,77 +10,82 @@ import {Message} from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
 
 @Component({
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+	templateUrl: './cliente.component.html',
+	styleUrls: ['./cliente.component.css']
 })
 export class ClienteComponent implements OnInit {
 
-  clientes: Cliente[];
-  showDialog = false;
-  showConfirm = false;
-  clienteEdit = new Cliente();
-  cidades: Cidade[];
-  estados: Estado[];
-  msgs: Message[] = [];
+	clientes: Cliente[];
+	showDialog = false;
+	showConfirm = false;
+	clienteEdit = new Cliente();
+	cidades: Cidade[];
+	estados: Estado[];
+	msgs: Message[] = [];
 
-  constructor(private clienteService: ClienteService, private confirmationService: ConfirmationService, private estadoService: EstadoService, private cidadeService:CidadeService, private loginService: LoginService) {
-  }
+	constructor(private clienteService: ClienteService, private confirmationService: ConfirmationService, private estadoService: EstadoService, private cidadeService:CidadeService, private loginService: LoginService) {
+	}
 
-  ngOnInit(): void {
-    this.findAll();
-    this.estadoService.findAll().subscribe(e => this.estados = e);
-  }
-  
-  hasRole(role: string): boolean {
-    return this.loginService.hasRole(role);
-  }
-  
-  mostrarConfirm(condicao: boolean) {
-	this.showConfirm = condicao;
-  }
-  
-  buscaCidades(estado): void{
-  	this.cidadeService.findByEstado(estado).subscribe(c => this.cidades = c);
-  }
+	ngOnInit(): void {
+		this.findAll();
+		this.estadoService.findAll().subscribe(e => this.estados = e);
+	}
 
-  findAll() {
-    this.clienteService.findAll().subscribe(e => this.clientes = e);
-  }
+	hasRole(role: string): boolean {
+		return this.loginService.hasRole(role);
+	}
 
-  novo() {
-    this.showDialog = true;
-    this.clienteEdit = new Cliente();
-  }
+	mostrarConfirm(condicao: boolean) {
+		this.showConfirm = condicao;
+	}
 
-  salvar() {
-    this.clienteService.save(this.clienteEdit).subscribe(e => {
-      this.clienteEdit = new Cliente();
-      this.findAll();
-      this.showDialog = false;
-    });
-  }
+	buscaCidades(estado): void{
+		this.cidadeService.findByEstado(estado).subscribe(c => this.cidades = c);
+	}
 
-  editar(cliente: Cliente) {
-    this.clienteEdit = cliente;
-    this.showDialog = true;
-  }
+	findAll() {
+		this.clienteService.findAll().subscribe(e => this.clientes = e);
+	}
 
-  remover(cliente: Cliente) {
-    this.clienteService.delete(cliente.id).subscribe(() => {
-      this.findAll();
-	  this.showConfirm = false;
-    });
-  }
-  
-  confirmDelete(cliente: Cliente){
-	  this.confirmationService.confirm({
-		  message:'Essa ação não poderá ser desfeita',
-		  header:'Deseja remover esse registro?',
-		  accept:()=>{this.clienteService.delete(cliente.id).subscribe(()=>{
-			  this.findAll();
-			  this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-		  });
-		}
-	  });
-  }
+	novo() {
+		this.showDialog = true;
+		this.clienteEdit = new Cliente();
+	}
+
+	salvar() {
+		this.clienteService.save(this.clienteEdit).subscribe(e => {
+			this.clienteEdit = new Cliente();
+			this.findAll();
+			this.showDialog = false;
+			this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
+			},
+			error => {
+				this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
+			}
+		);
+	}
+
+	editar(cliente: Cliente) {
+		this.clienteEdit = cliente;
+		this.showDialog = true;
+	}
+
+	remover(cliente: Cliente) {
+			this.clienteService.delete(cliente.id).subscribe(() => {
+			this.findAll();
+			this.showConfirm = false;
+		});
+	}
+
+	confirmDelete(cliente: Cliente){
+		this.confirmationService.confirm({
+			message:'Essa ação não poderá ser desfeita',
+			header:'Deseja remover esse registro?',
+			accept:()=>{this.clienteService.delete(cliente.id).subscribe(()=>{
+					this.findAll();
+					this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+				});
+			}
+		});
+	}
 }
