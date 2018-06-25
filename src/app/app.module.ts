@@ -54,7 +54,8 @@ import { CargoModule } from './cargo/cargo.module';
     AtividadeModule,
     EstadoModule,
     CidadeModule,
-    PessoaModule
+    PessoaModule, 
+    AmChartsModule
   ],
   providers: [
     {
