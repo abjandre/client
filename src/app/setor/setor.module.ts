@@ -5,6 +5,9 @@ import {SetorService} from './setor.service';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import {FormsModule} from '@angular/forms';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { GrowlModule } from 'primeng/growl';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -12,12 +15,16 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     TableModule,
     DialogModule,
+    DialogModule,
+    GrowlModule,
+    ConfirmDialogModule
   ],
   declarations: [
     SetorComponent
   ],
   providers: [
-    SetorService
+    SetorService,
+    ConfirmationService
   ]
 })
 export class SetorModule {

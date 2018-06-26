@@ -9,6 +9,8 @@ import { Cidade } from '../cidade/cidade';
 import { Estado } from '../estado/estado';
 import { EstadoService } from '../estado/estado.service';
 import { CidadeService } from '../cidade/cidade.service';
+import {LoginService} from '../login/login.service';
+import {Message} from 'primeng/api';
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -25,10 +27,12 @@ export class FuncionarioComponent implements OnInit {
   estados: Estado[];
   cidadeEdit = new Cidade();
   estadoEdit = new Estado();
+  msgs: Message[] = [];
   
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
+              , private loginService: LoginService
 ) {
 
   }
@@ -59,6 +63,9 @@ export class FuncionarioComponent implements OnInit {
       this.funcionarioEdit = new Funcionario();
       this.findAll();
       this.showDialog = false;
+    },
+     error => {
+      this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
     });
   }
 
@@ -72,5 +79,9 @@ export class FuncionarioComponent implements OnInit {
     this.funcionarioService.delete(funcionario.id).subscribe(() => {
       this.findAll();
     });
+  }
+
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
   }
 }
