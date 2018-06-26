@@ -28,7 +28,7 @@
               <button *ngIf="hasRole('ATRIBUTO_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(setor)">
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="hasRole('ATRIBUTO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="remover(setor)">
+              <button *ngIf="hasRole('ATRIBUTO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(setor)">
                 <i class="fa fa-trash"></i>
               </button>
             </td>
@@ -69,7 +69,7 @@
 
   <p-footer>
 
-    <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+    <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
     <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
   </p-footer>
 </p-dialog>
