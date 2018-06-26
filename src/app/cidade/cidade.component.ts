@@ -3,6 +3,9 @@ import {CidadeService} from './cidade.service';
 import {Cidade} from './cidade';
 import {Estado} from '../estado/estado';
 import {EstadoService} from '../estado/estado.service';
+import {LoginService} from '../login/login.service';
+import {Message} from 'primeng/api';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   templateUrl: './cidade.component.html',
@@ -15,14 +18,25 @@ export class CidadeComponent implements OnInit {
   showConfirm = false;
   cidadeEdit = new Cidade();
   estados: Estado[];
-
-  constructor(private cidadeService: CidadeService, private estadoService: EstadoService) {
-  	
+  msgs: Message[] = [];
+  
+  constructor(private cidadeService: CidadeService, 
+              private confirmationService: ConfirmationService, 
+              private estadoService: EstadoService, 
+              private loginService: LoginService) {
   }
 
   ngOnInit(): void {
     this.findAll();
     this.estadoService.findAll().subscribe(e => this.estados = e);
+  }
+  
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
+  }
+  
+  mostrarConfirm(condicao: boolean) {
+	this.showConfirm = condicao;
   }
 
   findAll() {
