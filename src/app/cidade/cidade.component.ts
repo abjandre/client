@@ -12,6 +12,7 @@ export class CidadeComponent implements OnInit {
 
   cidades: Cidade[];
   showDialog = false;
+  showConfirm = false;
   cidadeEdit = new Cidade();
   estados: Estado[];
 
@@ -49,6 +50,19 @@ export class CidadeComponent implements OnInit {
   remover(cidade: Cidade) {
     this.cidadeService.delete(cidade.id).subscribe(() => {
       this.findAll();
+	  this.showConfirm = false;
     });
+  }
+  
+  confirmDelete(cidade: Cidade){
+	  this.confirmationService.confirm({
+		  message:'Essa ação não poderá ser desfeita',
+		  header:'Deseja remover esse registro?',
+		  accept:()=>{this.cidadeService.delete(cidade.id).subscribe(()=>{
+			  this.findAll();
+			  this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+		  });
+		}
+	  });
   }
 }
