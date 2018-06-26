@@ -81,6 +81,7 @@
 					   id="cgc"
 					   name="cgc"
 					   class="form-control"
+					   placeholder="999.999.999-99 ou 99.999.999/9999-99"
 					   [(ngModel)]="clienteEdit.cgc">
 
 				<label for="telefone">Telefone</label><br>
@@ -121,7 +122,7 @@
 	</div>
 	<p-footer>
 
-		<button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+		<button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
 		<button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
 	</p-footer>
 </p-dialog>

@@ -24,7 +24,7 @@
                   <i class="fa fa-edit"></i>
                 </button>
 
-                <button *ngIf="hasRole('CENTROCUSTO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirm(ccusto)">
+                <button *ngIf="hasRole('CENTROCUSTO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(ccusto)">
 
                   <i class="fa fa-trash"></i>
                 </button>

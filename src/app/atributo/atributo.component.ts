@@ -53,7 +53,7 @@ export class AtributoComponent implements OnInit {
   editar(atributo: Atributo) {
     this.atributoEdit = atributo;
     this.showDialog = true;
-    this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
+    //this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
   confirmDelete(atributo: Atributo) {
@@ -65,6 +65,9 @@ export class AtributoComponent implements OnInit {
                 this.atributoService.delete(atributo.id).subscribe(() => {
                 this.findAll();
                 this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+              },
+              error => {
+                this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
               });
             }
         });

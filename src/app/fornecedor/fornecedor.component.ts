@@ -80,6 +80,11 @@ export class FornecedorComponent implements OnInit {
 		this.showConfirm = false;
 		});
 	}
+	
+	cancelar(){
+		this.showDialog = false;
+		this.fornecedorService.findAll().subscribe(e => this.fornecedores = e);
+	}
 
 	confirmDelete(fornecedor: Fornecedor){
 		this.confirmationService.confirm({

@@ -57,12 +57,20 @@ export class PerfilComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
-            accept: () => {
+            acceptLabel: 'Sim', rejectLabel: 'Não',
+             accept: () => {
                 this.perfilService.delete(perfil.id).subscribe(() => {
                 this.findAll();
-                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso!'}];
+              },
+              error => {
+                this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro não pode ser removido!'}];
               });
             }
         });
     }
+  cancelar() {
+      this.showDialog = false;
+      this.perfilService.findAll().subscribe(e => this.perfils = e);
+  }
 }

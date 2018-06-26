@@ -63,6 +63,10 @@ export class AtributofComponent implements OnInit {
       this.atributofEdit = new Atributof();
       this.findAll();
       this.showDialog = false;
+      this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];      
+    },
+    error => {
+      this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
     });
   }
 
@@ -75,16 +79,20 @@ export class AtributofComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
+            acceptLabel: 'Sim', rejectLabel: 'Não',
             accept: () => {
                 this.atributofService.delete(atributof.id).subscribe(() => {
                 this.findAll();
                 this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+              },
+              error => {
+                this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
               });
             }
         });
     }
 
-    cancelar() {
+  cancelar() {
       this.showDialog = false;
       this.atributofService.findAll().subscribe(e => this.atributofs = e);
   }

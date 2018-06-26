@@ -68,6 +68,11 @@ export class CidadeComponent implements OnInit {
     });
   }
   
+  cancelar(){
+    this.showDialog = false;
+    this.cidadeService.findAll().subscribe(e => this.cidades = e);
+  }
+  
   confirmDelete(cidade: Cidade){
 	  this.confirmationService.confirm({
 		  message:'Essa ação não poderá ser desfeita',
