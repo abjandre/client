@@ -7,13 +7,5 @@ export class ConsumoObra {
   obra: Obra;
   qtd: number;
   produto: Produto;
-
-
-  label(): string {
-    return this.obra.descricao;
-    // + '-' + this.produto.nome
-  }
-
-
 }
 

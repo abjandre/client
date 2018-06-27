@@ -3,42 +3,46 @@
   <section _ngcontent-c2="" class="box ">
     <header _ngcontent-c2="" class="panel_header">
       <h4 _ngcontent-c2="" class="title pull-left" style=" margin-bottom:20px;">Devolução</h4>
-      <button *ngIf="hasRole('DEVOLUCAO_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao"  (click)="novo()">Criar nova</button>
-          <p-table [value]="devolucoes">
-            <ng-template pTemplate="header">
-              <tr>
-                <th class="ids">ID</th>
-                <th>Obra</th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Data</th>
-                <th class="acoes">Ações</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-devolucao>
-              <tr>
-                <td>{{devolucao.id}}</td>
-                <td>{{devolucao.consumoObra.obra?.descricao}}</td>
-                <td>{{devolucao.consumoObra.produto?.nome}}</td>
-                <td>{{devolucao.qtd}}</td>
-                <td>{{devolucao.data}}</td>
-                <td>
-                  <button *ngIf="hasRole('DEVOLUCAO_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(devolucao)">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button *ngIf="hasRole('DEVOLUCAO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirm(devolucao)">
-                    <i class="fa fa-trash"></i>
-                  </button>
+      <button *ngIf="hasRole('DEVOLUCAO_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao" (click)="novo()">
+        Criar nova
+      </button>
+      <p-table [value]="devolucoes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="ids">ID</th>
+            <th>Obra</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+            <th class="acoes">Ações</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-devolucao>
+          <tr>
+            <td>{{devolucao.id}}</td>
+            <td>{{devolucao.consumoObra.obra?.descricao}}</td>
+            <td>{{devolucao.consumoObra.produto?.nome}}</td>
+            <td>{{devolucao.qtd}}</td>
+            <td>{{devolucao.data}}</td>
+            <td>
+              <button *ngIf="hasRole('DEVOLUCAO_EDITAR') || hasRole('ADMIN')" class="btn btn-primary"
+                      (click)="editar(devolucao)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button *ngIf="hasRole('DEVOLUCAO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger"
+                      (click)="confirm(devolucao)">
+                <i class="fa fa-trash"></i>
+              </button>
 
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </header>
-        <div _ngcontent-c2="" class="content-body">
-        </div>
-      </section>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </header>
+    <div _ngcontent-c2="" class="content-body">
     </div>
+  </section>
+</div>
 
 <p-confirmDialog></p-confirmDialog>
 <p-growl [(value)]="msgs"></p-growl>
@@ -56,10 +60,27 @@
       <div class="form-group">
 
         <label for="consumoObra">Consumo da Obra</label>
-        <p-dropdown name="consumoObra" id="consumoObra" [options]="consumoObras"
-                    [(ngModel)]="devolucaoEdit.consumoObra" placeholder="Selecione um consumo da obra" optionLabel="label()"
+        <p-dropdown name="consumoObra" id="consumoObra" [options]="consumoObras" optionLabel="id"
+                    [(ngModel)]="devolucaoEdit.consumoObra" placeholder="Selecione um consumo da obra"
                     [showClear]="true">
         </p-dropdown>
+
+        <!--<p-dropdown [options]="consumoObras"-->
+                    <!--[(ngModel)]="devolucaoEdit.consumoObra"-->
+                    <!--[autoWidth]="false"-->
+                    <!--optionLabel="id"-->
+         <!--filter="true">-->
+          <!--<ng-template let-something pTemplate="selectedItem">-->
+            <!--<div class="ui-helper-clearfix">-->
+              <!--{{something.produto.nome}}-->
+            <!--</div>-->
+          <!--</ng-template>-->
+          <!--<ng-template let-something pTemplate="item">-->
+            <!--<div class="ui-helper-clearfix">-->
+              <!--{{something.produto.nome}}-->
+            <!--</div>-->
+          <!--</ng-template>-->
+        <!--</p-dropdown>-->
 
         <label for="qtd">Quantidade</label>
         <input type="number"
@@ -78,7 +99,8 @@
                     dateFormat="dd/mm/yy"
                     [(ngModel)]="devolucaoEdit.data"
                     placeholder="Especificar a data">
-        </p-calendar><br>
+        </p-calendar>
+        <br>
 
       </div>
     </div>
