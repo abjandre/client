@@ -1,17 +1,17 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {ClienteComponent} from './cliente.component';
-import {ClienteService} from './cliente.service';
+import {DevolucaoComponent} from './devolucao.component';
+import {DevolucaoService} from './devolucao.service';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import {FormsModule} from '@angular/forms';
-import {EstadoService} from '../estado/estado.service';
-import {CidadeService} from '../cidade/cidade.service';
-import {DropdownModule, CheckboxModule, InputMaskModule} from 'primeng/primeng';
-import {LoginService} from '../login/login.service';
+import {CalendarModule, DropdownModule, InputMaskModule} from 'primeng/primeng';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {GrowlModule} from 'primeng/growl';
+import {LoginService} from '../login/login.service';
+import {ConsumoObraService} from '../consumoObra/consumoObra.service';
+
 
 @NgModule({
   imports: [
@@ -20,22 +20,22 @@ import {GrowlModule} from 'primeng/growl';
     TableModule,
     DialogModule,
     DropdownModule,
-    CheckboxModule,
+    CalendarModule,
     InputMaskModule,
     ConfirmDialogModule,
-    GrowlModule
+    GrowlModule,
+
   ],
   declarations: [
-    ClienteComponent
+    DevolucaoComponent
   ],
   providers: [
-    ClienteService,
-    CidadeService,
-    EstadoService,
+    DevolucaoService,
+    ConsumoObraService,
     LoginService,
     ConfirmationService
   ]
 })
-export class ClienteModule {
+export class DevolucaoModule {
 
 }
