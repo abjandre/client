@@ -9,7 +9,9 @@ import {DropdownModule, Dropdown} from 'primeng/dropdown';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CalendarModule} from 'primeng/calendar';
 import {InputMaskModule} from 'primeng/inputmask';
-
+import {GrowlModule} from 'primeng/growl';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -20,13 +22,16 @@ import {InputMaskModule} from 'primeng/inputmask';
     DropdownModule,
     CheckboxModule,
     CalendarModule,
-    InputMaskModule
+    InputMaskModule,
+    GrowlModule,
+    ConfirmDialogModule
   ],
   declarations: [
     FuncionarioComponent
   ],
   providers: [
-    FuncionarioService
+    FuncionarioService,
+    ConfirmationService
   ]
 })
 export class FuncionarioModule {

@@ -11,6 +11,7 @@ import { EstadoService } from '../estado/estado.service';
 import { CidadeService } from '../cidade/cidade.service';
 import {LoginService} from '../login/login.service';
 import {Message} from 'primeng/api';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   templateUrl: './funcionario.component.html',
@@ -32,9 +33,13 @@ export class FuncionarioComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService
               , private cargoService: CargoService, private setorService: SetorService
               , private estadoService:EstadoService, private cidadeService:CidadeService
-              , private loginService: LoginService
+              , private loginService: LoginService, private confirmationService: ConfirmationService
 ) {
 
+  }
+
+  hasRole(role: string): boolean {
+    return this.loginService.hasRole(role);
   }
 
   ngOnInit(): void {
@@ -63,6 +68,7 @@ export class FuncionarioComponent implements OnInit {
       this.funcionarioEdit = new Funcionario();
       this.findAll();
       this.showDialog = false;
+      this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];            
     },
      error => {
       this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
@@ -75,13 +81,27 @@ export class FuncionarioComponent implements OnInit {
   
   }
 
-  remover(funcionario: Funcionario) {
-    this.funcionarioService.delete(funcionario.id).subscribe(() => {
-      this.findAll();
+  confirmDelete(funcionario: Funcionario) {
+    this.confirmationService.confirm({
+        message: 'Essa ação não poderá ser desfeita',
+        header: 'Deseja remover esse registro?',
+       
+        accept: () => {
+            this.funcionarioService.delete(funcionario.id).subscribe(() => {
+            this.findAll();
+            this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+          },
+          error => {
+            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+          });
+        }
     });
-  }
+}
 
-  hasRole(role: string): boolean {
-    return this.loginService.hasRole(role);
-  }
+cancelar(){
+this.showDialog = false;
+this.funcionarioService.findAll().subscribe(e => this.funcionarios = e);
+}
+
+ 
 }
