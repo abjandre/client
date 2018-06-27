@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SetorService} from './setor.service';
 import {Setor} from './setor';
-import {LoginService} from '../login/login.service'; 
 import {Message} from 'primeng/api';
+import {LoginService} from '../login/login.service';
 import {ConfirmationService} from 'primeng/api';
 
 @Component({
@@ -17,15 +17,13 @@ export class SetorComponent implements OnInit {
   setorEdit = new Setor();
   msgs: Message[] = [];
 
-  constructor(private setorService: SetorService, 
-    private loginService: LoginService, 
-    private confirmationService: ConfirmationService) {
-  }
+  constructor(private setorService: SetorService, private loginService: LoginService, 
+  private confirmationService: ConfirmationService) {}
+
 
   hasRole(role: string): boolean {
     return this.loginService.hasRole(role);
   }
-
 
   ngOnInit(): void {
     this.findAll();
@@ -55,34 +53,28 @@ export class SetorComponent implements OnInit {
   editar(setor: Setor) {
     this.setorEdit = setor;
     this.showDialog = true;
+    //this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro alterado com sucesso'}];
   }
 
   confirmDelete(setor: Setor) {
-    this.confirmationService.confirm({
-        message: 'Essa ação não poderá ser desfeita',
-        header: 'Deseja remover esse registro?',
-       
-        accept: () => {
-            this.setorService.delete(setor.id).subscribe(() => {
-            this.findAll();
-            this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-          },
-          error => {
-            this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
-          });
-        }
-    });
-}
+        this.confirmationService.confirm({
+            message: 'Essa ação não poderá ser desfeita',
+            header: 'Deseja remover esse registro?',
+           
+            accept: () => {
+                this.setorService.delete(setor.id).subscribe(() => {
+                this.findAll();
+                this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+              },
+              error => {
+                this.msgs = [{severity:'error', summary:'Erro', detail:'Este registro nao pode ser removido.'}];
+              });
+            }
+        });
+    }
 
-cancelar(){
-  this.showDialog = false;
-  this.setorService.findAll().subscribe(e => this.setores = e);
-}
-
-
-  remover(setor: Setor) {
-    this.setorService.delete(setor.id).subscribe(() => {
-      this.findAll();
-    });
+  cancelar(){
+    this.showDialog = false;
+    this.setorService.findAll().subscribe(e => this.setores = e);
   }
 }

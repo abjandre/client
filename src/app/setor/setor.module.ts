@@ -15,7 +15,6 @@ import { ConfirmationService } from 'primeng/api';
     FormsModule,
     TableModule,
     DialogModule,
-    DialogModule,
     GrowlModule,
     ConfirmDialogModule
   ],
