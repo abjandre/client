@@ -60,27 +60,10 @@
       <div class="form-group">
 
         <label for="consumoObra">Consumo da Obra</label>
-        <p-dropdown name="consumoObra" id="consumoObra" [options]="consumoObras" optionLabel="id"
+        <p-dropdown name="consumoObra" id="consumoObra" [options]="consumoObras" optionLabel="produto.nome"
                     [(ngModel)]="devolucaoEdit.consumoObra" placeholder="Selecione um consumo da obra"
                     [showClear]="true">
         </p-dropdown>
-
-        <!--<p-dropdown [options]="consumoObras"-->
-                    <!--[(ngModel)]="devolucaoEdit.consumoObra"-->
-                    <!--[autoWidth]="false"-->
-                    <!--optionLabel="id"-->
-         <!--filter="true">-->
-          <!--<ng-template let-something pTemplate="selectedItem">-->
-            <!--<div class="ui-helper-clearfix">-->
-              <!--{{something.produto.nome}}-->
-            <!--</div>-->
-          <!--</ng-template>-->
-          <!--<ng-template let-something pTemplate="item">-->
-            <!--<div class="ui-helper-clearfix">-->
-              <!--{{something.produto.nome}}-->
-            <!--</div>-->
-          <!--</ng-template>-->
-        <!--</p-dropdown>-->
 
         <label for="qtd">Quantidade</label>
         <input type="number"
