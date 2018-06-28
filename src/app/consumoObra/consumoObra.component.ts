@@ -5,8 +5,8 @@ import {ConsumoObra} from './consumoObra';
 import {Obra} from '../obra/obra';
 import {ConfirmationService, Message} from 'primeng/api';
 import {ObraService} from '../obra/obra.service';
-import {ProdutoService} from '../produto/produto.service';
-import {Produto} from '../produto/produto';
+import {ItemNotaService} from "../itemNota/itemNota.service";
+import {ItemNota} from "../itemNota/itemNota";
 
 @Component({
   templateUrl: './consumoObra.component.html',
@@ -16,21 +16,21 @@ export class ConsumoObraComponent implements OnInit {
 
   consumoObras: ConsumoObra[];
   obras: Obra[];
-  produtos: Produto[];
+  itemNotas: ItemNota[];
   showDialog = false;
   consumoObraEdit = new ConsumoObra();
   msgs: Message[] = [];
 
   constructor(private consumoObraService: ConsumoObraService,
               private obraService: ObraService,
-              private produtoService: ProdutoService,
+              private itemNotaService: ItemNotaService,
               private loginService: LoginService,
               private confirmationService: ConfirmationService) {}
 
   ngOnInit(): void {
     this.findAll();
     this.obraService.findAll().subscribe(e => this.obras = e);
-    this.produtoService.findAll().subscribe(e => this.produtos = e);
+    this.itemNotaService.findAll().subscribe(e => this.itemNotas = e);
   }
 
   hasRole(role: string): boolean {

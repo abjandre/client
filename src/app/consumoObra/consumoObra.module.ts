@@ -11,7 +11,7 @@ import {ConfirmationService} from 'primeng/api';
 import {GrowlModule} from 'primeng/growl';
 import {ObraService} from '../obra/obra.service';
 import {LoginService} from '../login/login.service';
-import {ProdutoService} from '../produto/produto.service';
+import {ItemNotaModule} from "../itemNota/itemNota.module";
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import {ProdutoService} from '../produto/produto.service';
   providers: [
     ConsumoObraService,
     ObraService,
-    ProdutoService,
+    ItemNotaModule,
     LoginService,
     ConfirmationService
   ]

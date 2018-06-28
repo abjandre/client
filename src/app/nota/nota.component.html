@@ -20,7 +20,7 @@
               <td>{{nota.dataEntrada}}</td>
 
               <td>
-                <button *ngIf=" hasRole('NOTA_EDITAR') || hasRole('ADMIN')" 
+                <button *ngIf=" hasRole('NOTA_EDITAR') || hasRole('ADMIN')"
                   class="btn btn-primary" (click)="editar(nota)">
                   <i class="fa fa-edit"></i>
                 </button>
@@ -34,7 +34,7 @@
         </p-table>
       </header>
       <div _ngcontent-c2="" class="content-body">
-      </div>  
+      </div>
     </section>
   </div>
 
@@ -63,7 +63,7 @@
                  </p-dropdown>
                 </div>
               </div>
-           </div>       
+           </div>
 <!--FIM CLIENTES-->
 
          <div class="col-sm-12">
@@ -86,7 +86,7 @@
       </p-tabPanel>
 
       <p-tabPanel header="Item(s) NF">
-        <!--Lista de produtos-->
+        <!--Lista de itemNotas-->
         <div class="form-group">
           <label class="col-sm-3 control-label" for="produto">Descrição: </label>
           <div class="col-sm-7">
@@ -94,7 +94,7 @@
                         [(ngModel)]="itemNotaEdit.produto" optionLabel="descricao"></p-dropdown>
           </div>
         </div>
-        <!--fim lista de produtos-->
+        <!--fim lista de itemNotas-->
         <br>
         <div class="form-group">
           <label class="col-sm-4 control-label" for="quantidade">Quantidade: </label>
@@ -149,7 +149,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-itemNota>
 
-            
+
             <tr>
               <td>{{notaEdit.id}}</td>
               <td>{{itemNota.produto?.descricao}}</td>

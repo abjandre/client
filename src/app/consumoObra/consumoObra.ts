@@ -1,11 +1,11 @@
 import {Obra} from '../obra/obra';
-import {Produto} from '../produto/produto';
+import {ItemNota} from "../itemNota/itemNota";
 
 export class ConsumoObra {
 
   id: number;
   obra: Obra;
   qtd: number;
-  produto: Produto;
+  itemNota: ItemNota;
 }
 

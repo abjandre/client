@@ -21,7 +21,7 @@
       <td>{{itemNota.quantidade}}</td>
       <td>{{itemNota.produto?.valor}}</td>
       <td>{{itemNota.quantidade*itemNota.produto.valor}}</td>
-      
+
       <td>
         <button class="btn btn-primary" (click)="editar(itemNota)">
           <i class="fa fa-edit"></i>
@@ -30,7 +30,7 @@
           <i class="fa fa-trash"></i>
         </button>
       </td>
-    
+
     </tr>
   </ng-template>
 
@@ -52,26 +52,26 @@
     <div class="form-group">
         <label for="Nota">Nota: </label>
         <br>
-      <p-dropdown [autoDisplayFirst] ="false" name= "idNota" 
-      [options]="idNotas" [(ngModel)]="itemNotaEdit.nota" 
+      <p-dropdown [autoDisplayFirst] ="false" name= "idNota"
+      [options]="idNotas" [(ngModel)]="itemNotaEdit.nota"
       optionLabel="id"></p-dropdown>
     </div>
 </div>
-<!--fim lista de produtos-->
+<!--fim lista de itemNotas-->
 
 
-    <!--Lista de produtos-->
+    <!--Lista de itemNotas-->
     <div class="col-sm-12">
           <div class="form-group">
               <label for="produto">Descrição: </label>
               <br>
-            <p-dropdown [autoDisplayFirst] ="false" name= "idProduto" 
+            <p-dropdown [autoDisplayFirst] ="false" name= "idProduto"
             [options]="idProdutos" [(ngModel)]="itemNotaEdit.produto"
             optionLabel="descricao"  ></p-dropdown>
 
           </div>
     </div>
-<!--fim lista de produtos-->
+<!--fim lista de itemNotas-->
 
 <div class="col-sm-12">
   <div class="form-group">
@@ -80,10 +80,10 @@
            id="quantidade"
            name="quantidade"
            class="form-control" min="0"
-           [(ngModel)]="itemNotaEdit.quantidade">                           
+           [(ngModel)]="itemNotaEdit.quantidade">
   </div>
 </div>
-   
+
       <div class="col-sm-12">
         <div class="form-group">
           <label for="valorUnitario">Valor Unitário: </label>
@@ -91,7 +91,7 @@
                  id="valorUnitario"
                  name="valorUnitario"
                  class="form-control"
-                 [(ngModel)]="itemNotaEdit.produto">                           
+                 [(ngModel)]="itemNotaEdit.produto">
         </div>
       </div>
 
@@ -102,7 +102,7 @@
                  id="getValorTotal"
                  name="valorTotal"
                  class="form-control"
-                 [(ngModel)]="itemNotaEdit.valorTotal">                           
+                 [(ngModel)]="itemNotaEdit.valorTotal">
         </div>
       </div>
 

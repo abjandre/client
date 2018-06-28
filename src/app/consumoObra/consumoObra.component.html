@@ -18,7 +18,7 @@
               <tr>
                 <td>{{consumoObra.id}}</td>
                 <td>{{consumoObra.obra?.descricao}}</td>
-                <td>{{consumoObra.produto?.nome}}</td>
+                <td>{{consumoObra.itemNota.produto?.nome}}</td>
                 <td>{{consumoObra.qtd}}</td>
                 <td>
                   <button *ngIf="hasRole('CONSUMO_OBRAS_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(consumoObra)">
@@ -59,9 +59,9 @@
                     [showClear]="true">
         </p-dropdown>
 
-        <label for="produto">Produto</label>
-        <p-dropdown name="produto" id="produto" [options]="produtos"
-                    [(ngModel)]="consumoObraEdit.produto" placeholder="Selecione um produto" optionLabel="nome"
+        <label for="itemNota">Produto</label>
+        <p-dropdown name="itemNota" id="itemNota" [options]="itemNotas"
+                    [(ngModel)]="consumoObraEdit.itemNota" placeholder="Selecione um produto" optionLabel="produto.nome"
                     [showClear]="true">
         </p-dropdown>
 
