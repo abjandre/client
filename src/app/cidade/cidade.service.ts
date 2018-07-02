@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {CrudService} from '../generic/crud.service';
-import {Cidade} from './cidade';
-import {Estado} from '../estado/estado';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
+import {Cidade} from './cidade';
+import {Estado} from '../estado/estado';
+
 
 @Injectable()
 export class CidadeService extends CrudService<Cidade, number> {
@@ -18,3 +19,4 @@ export class CidadeService extends CrudService<Cidade, number> {
 	    return this.http.get<Cidade[]>(url);
   }
 }
+

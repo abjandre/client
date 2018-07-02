@@ -79,7 +79,7 @@ export class AtributofComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
-            acceptLabel: 'Sim', rejectLabel: 'Não',
+           
             accept: () => {
                 this.atributofService.delete(atributof.id).subscribe(() => {
                 this.findAll();

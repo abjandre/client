@@ -115,8 +115,8 @@ export class AtividadeComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Essa ação não poderá ser desfeita',
       header: 'Deseja remover esse registro?',
-      acceptLabel: 'SIM',
-      rejectLabel: 'NÃO',
+     
+      
       accept: () => {
         this.atividadeService.delete(atividade.id).subscribe(() => {
           this.findAll();

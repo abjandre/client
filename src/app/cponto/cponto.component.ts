@@ -80,8 +80,7 @@ export class CpontoComponent implements OnInit {
     this.confirmationService.confirm({
       message: 'Essa ação não poderá ser desfeita',
       header: 'Deseja remover esse registro?',
-      acceptLabel: 'SIM',
-      rejectLabel: 'NÃO',
+      
       accept: () => {
         this.cpontoService.delete(cponto.id).subscribe(() => {
             this.findAll();

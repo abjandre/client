@@ -23,7 +23,7 @@
                 <button *ngIf="hasRole('CARGO_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cargo)">
                   <i class="fa fa-edit"></i>
                 </button>
-                <button *ngIf="hasRole('CARGO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="remover(cargo)">
+                <button *ngIf="hasRole('CARGO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cargo)">
                   <i class="fa fa-trash"></i>
                 </button>
               </td>
@@ -35,6 +35,10 @@
       </div>  
     </section>
   </div>
+
+  <p-confirmDialog></p-confirmDialog>
+  
+  <p-growl [(value)]="msgs"></p-growl>
 
 
 <p-dialog header="Cadastro"
@@ -53,7 +57,7 @@
                   id="nome"
                   name="nome"
                   class="form-control"
-                  [(ngModel)]="cargoEdit.nome">
+                  [(ngModel)]="cargoEdit.nome" required>
         </div>
 
       <div class="form-group">
@@ -62,7 +66,7 @@
                id="descricao"
                name="descricao"
                class="form-control"
-               [(ngModel)]="cargoEdit.descricao">
+               [(ngModel)]="cargoEdit.descricao" required>
       </div>
     </div>
 
@@ -72,6 +76,6 @@
   <p-footer>
 
     <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
-    <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
+    <button type="button" class="btn btn-success" (click)="salvarCargo()">Salvar</button>
   </p-footer>
 </p-dialog>

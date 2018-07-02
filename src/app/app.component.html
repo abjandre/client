@@ -162,15 +162,14 @@
           </a>
         </li>
 
-
-        <li *ngIf="hasRole('FORNECEDOR_CRIAR') || hasRole('FORNECEDOR_EDITAR') || hasRole('FORNECEDOR_REMOVER') || hasRole('ADMIN')">
-          <a routerLink="/fornecedor">
-            <i class="fa fa-money"></i>
-            <span  class="title">Fornecedor</span>
+        <li>
+          <a routerLink="/setor">
+            <i class="fa fa-puzzle-piece"></i>
+            <span  class="title">Setor</span>
           </a>
         </li>
 
-        <li *ngIf="hasRole('FUNCIONARIO_CRIAR') || hasRole('FUNCIONARIO_EDITAR') || hasRole('FUNCIONARIO_REMOVER') || hasRole('ADMIN')">
+        <li>
           <a routerLink="/funcionario">
             <i class="fa fa-users"></i>
             <span  class="title">Funcionário</span>
@@ -205,12 +204,20 @@
           </a>
         </li>
 
-      <!--  <li *ngIf="hasRole('REQUISITOS_CRIAR') || hasRole('REQUISITOS_EDITAR') || hasRole('REQUISITOS_REMOVER') || hasRole('ADMIN')">
-          <a routerLink="/requisitos">
-            <i class="fa fa-users"></i>
-            <span  class="title">Requisitos</span>
+        <li>
+          <a routerLink="/cidade">
+            <i class="fa fa-bars"></i>
+            <span  class="title">Cidade</span>
           </a>
-        </li>-->
+        </li>
+
+        <li>
+          <a routerLink="/estado">
+            <i class="fa fa-columns"></i>
+            <span  class="title">Estado</span>
+          </a>
+        </li>
+
 
         <li *ngIf="hasRole('SETOR_CRIAR') || hasRole('SETOR_EDITAR') || hasRole('SETOR_REMOVER') || hasRole('ADMIN')">
           <a routerLink="/setor">

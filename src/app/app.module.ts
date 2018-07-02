@@ -31,8 +31,6 @@ import {ObraModule} from './obra/obra.module';
 import {CidadeModule} from './cidade/cidade.module';
 import {EstadoModule} from './estado/estado.module';
 import {LocalModule} from './local/local.module';
-import {ConsumoObraModule} from './consumoObra/consumoObra.module';
-import {DevolucaoModule} from './devolucao/devolucao.module';
 
 @NgModule({
   declarations: [
@@ -68,10 +66,11 @@ import {DevolucaoModule} from './devolucao/devolucao.module';
     AmChartsModule,
     CidadeModule,
     FornecedorModule,
-    EstadoModule,
-    LocalModule,
-    ConsumoObraModule,
-    DevolucaoModule
+	  ClienteModule,
+	  EstadoModule,
+    CidadeModule,
+    LocalModule
+
   ],
   providers: [
     {
