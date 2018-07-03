@@ -3,7 +3,7 @@
   <section _ngcontent-c2="" class="box ">
     <header _ngcontent-c2="" class="panel_header">
       <h4 _ngcontent-c2="" class="title pull-left title1">Setor</h4>
-      <button class="btn btn-primary botao"  (click)="novo()">Criar novo</button>
+      <button *ngIf="hasRole('ATRIBUTO_CRIAR') || hasRole('ADMIN')" class="btn btn-primary botao"  (click)="novo()">Criar novo</button>
       <p-table [value]="setores">
         <ng-template pTemplate="header">
           <tr>
@@ -17,10 +17,10 @@
             <td>{{setor.id}}</td>
             <td>{{setor.descricao}}</td>
             <td>
-              <button *ngIf="hasRole('SETOR_EDITAR')  || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(setor)">
+              <button *ngIf="hasRole('ATRIBUTO_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(setor)">
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="hasRole('SETOR_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="remover(setor)">
+              <button *ngIf="hasRole('ATRIBUTO_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(setor)">
                 <i class="fa fa-trash"></i>
               </button>
             </td>
@@ -33,6 +33,9 @@
   </section>
 </div>
 
+<p-confirmDialog></p-confirmDialog>
+
+<p-growl [(value)]="msgs"></p-growl>
 
 <p-dialog header="Cadastro"
           [(visible)]="showDialog"
@@ -57,8 +60,7 @@
 
 
   <p-footer>
-
-    <button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
+    <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
     <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
   </p-footer>
 </p-dialog>

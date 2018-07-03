@@ -29,7 +29,7 @@ export class BancohorasComponent implements OnInit {
 
   ngOnInit() {
     this.funcionarioService.findAll().subscribe(e => this.funcionarios = e);
-    // this.cpontoService.findAll().subscribe(e => this.cpontos = e);
+    // this.cpontoService.findAll().subscribe(e => this.consumoObras = e);
     this.count = 0;
   }
 

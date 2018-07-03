@@ -75,9 +75,9 @@ export class FornecedorComponent implements OnInit {
 	}
 
 	remover(fornecedor: Fornecedor) {
-		this.fornecedorService.delete(fornecedor.id).subscribe(() => {
-		this.findAll();
-		this.showConfirm = false;
+			this.fornecedorService.delete(fornecedor.id).subscribe(() => {
+			this.findAll();
+			this.showConfirm = false;
 		});
 	}
 	

@@ -10,7 +10,7 @@ import {EstadoService} from '../estado/estado.service';
 import {LoginService} from '../login/login.service';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-
+import {GrowlModule} from 'primeng/growl';
 
 @NgModule({
   imports: [
@@ -19,7 +19,8 @@ import {ConfirmationService} from 'primeng/api';
     TableModule,
     DialogModule,
     DropdownModule,
-	ConfirmDialogModule
+	ConfirmDialogModule,
+	GrowlModule
   ],
   declarations: [
     CidadeComponent

@@ -57,7 +57,7 @@ export class PerfilComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
-            acceptLabel: 'Sim', rejectLabel: 'Não',
+            
              accept: () => {
                 this.perfilService.delete(perfil.id).subscribe(() => {
                 this.findAll();

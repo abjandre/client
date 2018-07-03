@@ -50,11 +50,16 @@ export class CidadeComponent implements OnInit {
 
   salvar() {
     this.cidadeService.save(this.cidadeEdit).subscribe(e => {
-      this.cidadeEdit = new Cidade();
-      this.findAll();
-      this.showDialog = false;
-    });
-  }
+			this.cidadeEdit = new Cidade();
+			this.findAll();
+			this.showDialog = false;
+			this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
+			},
+			error => {
+				this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
+			}
+		);
+	}
 
   editar(cidade: Cidade) {
     this.cidadeEdit = cidade;

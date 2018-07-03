@@ -8,7 +8,7 @@ import {ClienteService} from '../cliente/cliente.service';
 import {FornecedorService} from '../fornecedor/fornecedor.service';
 import {CcustoService} from '../ccusto/ccusto.service';
 import {AmChartsService, AmChart} from '@amcharts/amcharts3-angular';
-import { } from '@types/googlemaps';
+import {} from '@types/googlemaps';
 import {Cidade} from '../cidade/cidade';
 import {CidadeService} from '../cidade/cidade.service';
 import {Local} from '../local/local';
@@ -55,7 +55,7 @@ export class ObraComponent implements OnInit {
   }
 
   constructor(private obraService: ObraService, private clienteService: ClienteService, private fornecedorService: FornecedorService,
-              private CcustoService: CcustoService, private AmCharts: AmChartsService, private cidadeService: CidadeService,
+              private ccustoService: CcustoService, private AmCharts: AmChartsService, private cidadeService: CidadeService,
               private localService: LocalService) {
   }
 
@@ -78,13 +78,14 @@ export class ObraComponent implements OnInit {
 
     this.clienteService.findAll().subscribe(e => this.clientes = e);
     this.fornecedorService.findAll().subscribe(e => this.fornecedores = e);
-    this.CcustoService.findAll().subscribe(e => this.ccustos = e);
+    this.ccustoService.findAll().subscribe(e => this.ccustos = e);
     this.cidadeService.findAll().subscribe(e => this.cidades = e);
     this.localService.findAll().subscribe(e => this.locais = e);
 
     this.options = this.makeOptions(this.obras);
 
   }
+
 // parei adicioando o amChart, faltava o OnInit https://github.com/amcharts/amcharts3-angular2
   makeOptions(e) {
     return {
@@ -138,12 +139,13 @@ export class ObraComponent implements OnInit {
       },
     };
   }
+
   findAll() {
     this.obraService.findAll().subscribe(e => this.obras = e);
     console.log(this.obras);
   }
 
-  setCenter(e:any, locais){
+  setCenter(e: any, locais) {
     e.preventDefault();
     this.map.setCenter(new google.maps.LatLng(locais[0].latitude, locais[0].longitude));
   }
@@ -182,7 +184,7 @@ export class ObraComponent implements OnInit {
         this.showPosition(position);
       });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
     }
   }
 
@@ -190,7 +192,7 @@ export class ObraComponent implements OnInit {
     this.currentLat = position.coords.latitude;
     this.currentLong = position.coords.longitude;
 
-    let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     this.map.panTo(location);
 
     if (!this.marker) {
@@ -199,8 +201,7 @@ export class ObraComponent implements OnInit {
         map: this.map,
         title: 'Got you!'
       });
-    }
-    else {
+    } else {
       this.marker.setPosition(location);
     }
   }
@@ -212,7 +213,7 @@ export class ObraComponent implements OnInit {
         this.showTrackingPosition(position);
       });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
     }
   }
 
@@ -221,7 +222,7 @@ export class ObraComponent implements OnInit {
     this.currentLat = position.coords.latitude;
     this.currentLong = position.coords.longitude;
 
-    let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     this.map.panTo(location);
 
     if (!this.marker) {
@@ -230,8 +231,7 @@ export class ObraComponent implements OnInit {
         map: this.map,
         title: 'Got you!'
       });
-    }
-    else {
+    } else {
       this.marker.setPosition(location);
     }
   }

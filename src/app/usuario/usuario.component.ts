@@ -68,7 +68,7 @@ export class UsuarioComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Essa ação não poderá ser desfeita',
             header: 'Deseja remover esse registro?',
-            acceptLabel: 'Sim', rejectLabel: 'Não',
+           
              accept: () => {
                 this.usuarioService.delete(usuario.id).subscribe(() => {
                 this.findAll();
