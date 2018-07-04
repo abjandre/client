@@ -62,12 +62,7 @@ export class EstadoComponent implements OnInit {
 			this.showConfirm = false;
 		});
 	}
-	
-	cancelar(){
-		this.showDialog = false;
-		this.estadoService.findAll().subscribe(e => this.estados = e);
-	}
-
+  
 	confirmDelete(estado: Estado){
 		this.confirmationService.confirm({
 			message:'Essa ação não poderá ser desfeita',
@@ -79,3 +74,4 @@ export class EstadoComponent implements OnInit {
 		});
 	}
 }
+
