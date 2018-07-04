@@ -12,8 +12,6 @@
 			<th>ID</th>
 			<th>Nome</th>
 			<th>Estado</th>
-			<th>Latidude</th>
-			<th>Longitude</th>
 			<th>Ações</th>
 		</tr>
 	</ng-template>
@@ -22,8 +20,6 @@
 			<td>{{cidade.id}}</td>
 			<td>{{cidade.nome}}</td>
 			<td>{{cidade.estado.nome}}</td>
-			<td>{{cidade.latitude}}</td>
-			<td>{{cidade.longitude}}</td>
 			<td>
 				<button *ngIf="hasRole('CIDADE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cidade)">
 					<i class="fa fa-edit"></i>
@@ -62,28 +58,6 @@
 				</p-dropdown>
 			</div>
 		</div>
-	
-	<div class="col-sm-6">
-      <div class="form-group">
-        <label for="descricao">Latitude</label>
-        <input type="text"
-               id="latitude"
-               name="latitude"
-               class="form-control"
-               [(ngModel)]="cidadeEdit.latitude">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="descricao">Longitude</label>
-        <input type="text"
-               id="longitude"
-               name="longitude"
-               class="form-control"
-               [(ngModel)]="cidadeEdit.longitude">
-      </div>
-    </div>
-  </div>
 
 
 	<p-footer>
