@@ -81,6 +81,7 @@ export class FornecedorComponent implements OnInit {
 		});
 	}
 
+
 	confirmDelete(fornecedor: Fornecedor){
 		this.confirmationService.confirm({
 			message:'Essa ação não poderá ser desfeita',

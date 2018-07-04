@@ -62,7 +62,7 @@ export class EstadoComponent implements OnInit {
 			this.showConfirm = false;
 		});
 	}
-
+  
 	confirmDelete(estado: Estado){
 		this.confirmationService.confirm({
 			message:'Essa ação não poderá ser desfeita',
@@ -74,3 +74,4 @@ export class EstadoComponent implements OnInit {
 		});
 	}
 }
+

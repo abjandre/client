@@ -7,6 +7,11 @@ import {CidadeComponent} from './cidade.component';
 import {CidadeService} from './cidade.service';
 import {DropdownModule} from 'primeng/primeng';
 import {EstadoService} from '../estado/estado.service';
+import {LoginService} from '../login/login.service';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {GrowlModule} from 'primeng/growl';
+
 
 @NgModule({
   imports: [
@@ -14,6 +19,9 @@ import {EstadoService} from '../estado/estado.service';
     FormsModule,
     TableModule,
     DialogModule,
+    DropdownModule,
+	  ConfirmDialogModule,
+	  GrowlModule
     DropdownModule
   ],
   declarations: [
@@ -21,7 +29,10 @@ import {EstadoService} from '../estado/estado.service';
   ],
   providers: [
     CidadeService,
-    EstadoService
+    EstadoService,
+	  LoginService,
+	  ConfirmationService
+
   ]
 })
 export class CidadeModule {

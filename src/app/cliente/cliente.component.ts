@@ -23,7 +23,9 @@ export class ClienteComponent implements OnInit {
 	estados: Estado[];
 	msgs: Message[] = [];
 
+
 	constructor(private clienteService: ClienteService, private confirmationService: ConfirmationService, private estadoService: EstadoService, private cidadeService:CidadeService, private loginService: LoginService) {
+
 	}
 
 	ngOnInit(): void {
@@ -58,6 +60,7 @@ export class ClienteComponent implements OnInit {
 			this.findAll();
 			this.showDialog = false;
 			this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
+
 			},
 			error => {
 				this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
@@ -76,6 +79,7 @@ export class ClienteComponent implements OnInit {
 			this.showConfirm = false;
 		});
 	}
+
 
 	confirmDelete(cliente: Cliente){
 		this.confirmationService.confirm({

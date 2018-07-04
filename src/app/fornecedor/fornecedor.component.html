@@ -30,6 +30,7 @@
 						<td>{{fornecedor.apelido}}</td>
 						<td>{{fornecedor.cgc}}</td>
 						<td>{{fornecedor.telefone}}</td>
+
 						
 					</tr>
 				<!--</ng-template>
@@ -37,12 +38,13 @@
 					
 				</ng-template>
 				<ng-template pTemplate="body" let-fornecedor>-->
+
 					<tr>
 						<td>{{fornecedor.cidade.nome}}</td>
 						<td>{{fornecedor.endereco}}</td>
 						<td>{{fornecedor.email}}</td>
 						<td>{{fornecedor.ativo}}</td>
-					
+
 						<td>
 							<button *ngIf="hasRole('FORNECEDOR_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(fornecedor)">
 								<i class="fa fa-edit"></i>
@@ -55,7 +57,7 @@
 				</ng-template>
 			</p-table>
 		</header>
-      <div _ngcontent-c2="" class="content-body"></div>  
+		<div _ngcontent-c2="" class="content-body"></div>  
     </section>
 </div>
 <p-confirmDialog></p-confirmDialog>
