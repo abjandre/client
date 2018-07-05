@@ -22,7 +22,6 @@ import {GrowlModule} from 'primeng/growl';
     DropdownModule,
 	  ConfirmDialogModule,
 	  GrowlModule
-    DropdownModule
   ],
   declarations: [
     CidadeComponent
