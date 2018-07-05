@@ -80,6 +80,10 @@ export class ClienteComponent implements OnInit {
 		});
 	}
 
+	cancelar(){
+		this.showDialog = false;
+		this.clienteService.findAll().subscribe(e => this.clientes= e);
+	}
 
 	confirmDelete(cliente: Cliente){
 		this.confirmationService.confirm({
