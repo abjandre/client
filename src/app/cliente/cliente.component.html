@@ -24,27 +24,28 @@
 					</tr>
 				</ng-template>
 				<ng-template pTemplate="body" let-cliente>
-					<tr>
-						<td>{{cliente.id}}</td>
-						<td>{{cliente.nome}}</td>
-						<td>{{cliente.apelido}}</td>
-						<td>{{cliente.cgc}}</td>
-						<td>{{cliente.telefone}}</td>
-					</tr>
-					<tr>
-						<td>{{cliente.cidade.nome}}</td>
-						<td>{{cliente.endereco}}</td>
-						<td>{{cliente.email}}</td>
-						<td>{{cliente.ativo}}</td>
-						<td>
-							<button *ngIf="hasRole('CLIENTE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cliente)">
-								<i class="fa fa-edit"></i>
-							</button>
-							<button *ngIf="hasRole('CLIENTE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cliente)">
-								<i class="fa fa-trash"></i>
-							</button>
-						</td>
-					</tr>
+
+				<tr>
+					<td>{{cliente.id}}</td>
+					<td>{{cliente.nome}}</td>
+					<td>{{cliente.apelido}}</td>
+					<td>{{cliente.cgc}}</td>
+					<td>{{cliente.telefone}}</td>
+				</tr>
+				<tr>
+					<td>{{cliente.cidade.nome}}</td>
+					<td>{{cliente.endereco}}</td>
+					<td>{{cliente.email}}</td>
+					<td>{{cliente.ativo}}</td>
+					<td>
+						<button *ngIf="hasRole('CLIENTE_EDITAR') || hasRole('ADMIN')" class="btn btn-primary" (click)="editar(cliente)">
+							<i class="fa fa-edit"></i>
+						</button>
+						<button *ngIf="hasRole('CLIENTE_REMOVER') || hasRole('ADMIN')" class="btn btn-danger" (click)="confirmDelete(cliente)">
+							<i class="fa fa-trash"></i>
+						</button>
+					</td>
+				</tr>
 				</ng-template>
 			</p-table>
 		</header>
@@ -83,7 +84,6 @@
 					   id="cgc"
 					   name="cgc"
 					   class="form-control"
-					   placeholder="999.999.999-99 ou 99.999.999/9999-99"
 					   [(ngModel)]="clienteEdit.cgc">
 
 				<label for="telefone">Telefone</label><br>
@@ -124,7 +124,7 @@
 	</div>
 	<p-footer>
 
-		<button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
+		<button type="button" class="btn btn-default" (click)="showDialog = false">Cancelar</button>
 		<button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
 	</p-footer>
 </p-dialog>
