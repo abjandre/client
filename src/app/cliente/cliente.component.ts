@@ -23,9 +23,11 @@ export class ClienteComponent implements OnInit {
 	estados: Estado[];
 	msgs: Message[] = [];
 
-
-	constructor(private clienteService: ClienteService, private confirmationService: ConfirmationService, private estadoService: EstadoService, private cidadeService:CidadeService, private loginService: LoginService) {
-
+	constructor(private clienteService: ClienteService, 
+				private confirmationService: ConfirmationService, 
+				private estadoService: EstadoService, 
+				private cidadeService:CidadeService, 
+				private loginService: LoginService) {
 	}
 
 	ngOnInit(): void {
@@ -56,11 +58,10 @@ export class ClienteComponent implements OnInit {
 
 	salvar() {
 		this.clienteService.save(this.clienteEdit).subscribe(e => {
-			this.clienteEdit = new Cliente();
-			this.findAll();
-			this.showDialog = false;
-			this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
-
+				this.clienteEdit = new Cliente();
+				this.findAll();
+				this.showDialog = false;
+				this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro salvo com sucesso'}];
 			},
 			error => {
 				this.msgs = [{severity:'error', summary:'Erro', detail:'Certifique-se de preencher todos os campos.'}];
@@ -79,17 +80,21 @@ export class ClienteComponent implements OnInit {
 			this.showConfirm = false;
 		});
 	}
-
+	
+	cancelar(){
+		this.showDialog = false;
+		this.clienteService.findAll().subscribe(e => this.clientes = e);
+	}
 
 	confirmDelete(cliente: Cliente){
 		this.confirmationService.confirm({
 			message:'Essa ação não poderá ser desfeita',
 			header:'Deseja remover esse registro?',
 			accept:()=>{this.clienteService.delete(cliente.id).subscribe(()=>{
-					this.findAll();
-					this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
-				});
-			}
-		});
+				this.findAll();
+				this.msgs = [{severity:'sucess', summary:'Confirmado', detail:'Registro removido com sucesso'}];
+			});
+		}
+	});
 	}
 }
